@@ -28,7 +28,8 @@ var _floatFall: bool = false
 var _stateDict: Dictionary[States, Callable] = {
 	States.GROUNDED:state_grounded,
 	States.IN_AIR:state_inair,
-	States.GLIDING:state_gliding
+	States.GLIDING:state_gliding,
+	States.GRINDING:state_grinding
 }
 
 func _ready() -> void:
@@ -196,6 +197,22 @@ func state_gliding(delta: float):
 	_evilDebugLabel.text = str(maxFallSpeed) + "\n" + str(maxForwardSpeed) + "\n" + str(_targetVelocity)
 	_meshPivot.rotation.x = -direction.y * _tiltVariation
 	
+@export_group("Grinding")
+var _rail: GrindRail
+@export var _grindOffset: float = 1.0
+@export var _grindSpeed: float = 10.0
+var _grindDirection: int = 1
+func state_grinding(delta: float):
+	global_position = _rail._path.global_position
+	global_position.y += _grindOffset
+	_meshPivot.rotation = _rail._path.rotation
+	_rail._path.progress += _grindDirection * _grindSpeed * delta
+	if (Input.is_action_just_pressed("jump")):
+		_targetVelocity.y = _jumpSpeed;
+		_floatFall = true
+		_state = States.IN_AIR
+	
+	
 @export_group("Camera Controls")
 @export_range(0.0, 1.0) var mouse_sensitivity = 0.005
 @export var tilt_limit = deg_to_rad(75)
@@ -207,3 +224,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Prevent the camera from rotating too far up or down.
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit / 2)
 		_camera_pivot.rotation.y += -event.relative.x * mouse_sensitivity
+		
+func rail_entered(body: Object, gr: GrindRail):
+	#global_position = gr.to_global(gr.curve.get_closest_point(global_position))
+	if (_state != States.GRINDING):
+		gr.setInitialGrindPos(global_position)
+		_state = States.GRINDING
+		_rail = gr
+		if _rail.getBackwardVector().dot(velocity.normalized()) > 0:
+			_grindDirection = -1
+		else:
+			_grindDirection = 1

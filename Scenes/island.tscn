@@ -1,5 +1,6 @@
-[gd_scene load_steps=39 format=4 uid="uid://bxkveb88rr4xj"]
+[gd_scene load_steps=40 format=4 uid="uid://bxkveb88rr4xj"]
 
+[ext_resource type="PackedScene" uid="uid://b47bd47f0po0t" path="res://Scenes/grind_rail.tscn" id="2_81x60"]
 [ext_resource type="PackedScene" uid="uid://dcb63cyd7qxid" path="res://Scenes/player.tscn" id="2_m582m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0cns4"]
@@ -443,3 +444,7 @@ transform = Transform3D(1, 0, 0, 0, 0.8505542, 0.52588737, 0, -0.52588737, 0.850
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_m582m")
+
+[node name="grind_rail" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("2_81x60")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5451355)
+_player = NodePath("../Player")

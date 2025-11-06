@@ -46,6 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454435, -0.20640302)
 mesh = SubResource("BoxMesh_v0iea")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 117.0
 offset_bottom = 75.0
 theme_override_font_sizes/font_size = 30
