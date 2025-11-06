@@ -206,8 +206,14 @@ func state_grinding(delta: float):
 	global_position = _rail._path.global_position
 	global_position.y += _grindOffset
 	_meshPivot.rotation = _rail._path.rotation
+	if (_grindDirection < 0):
+		_meshPivot.rotation_degrees.y += 180
 	_rail._path.progress += _grindDirection * _grindSpeed * delta
 	if (Input.is_action_just_pressed("jump")):
+		_targetVelocity.y = _jumpSpeed;
+		_floatFall = true
+		_state = States.IN_AIR
+	if (_rail._path.progress_ratio >= 1.0 and _rail._path.loop == false):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
