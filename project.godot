@@ -19,7 +19,8 @@ config/icon="res://icon.svg"
 
 folder_colors={
 "res://Models/": "orange",
-"res://Scenes/": "red"
+"res://Scenes/": "red",
+"res://Textures/": "yellow"
 }
 
 [input]
@@ -90,8 +91,3 @@ glide_up={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
 ]
 }
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

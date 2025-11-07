@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-enum States {GROUNDED, IN_AIR, GRINDING, GLIDING}
+enum States {GROUNDED, IN_AIR, GRINDING, GLIDING, DROWNING}
 
 var _state: States = States.GROUNDED
 
@@ -29,7 +29,8 @@ var _stateDict: Dictionary[States, Callable] = {
 	States.GROUNDED:state_grounded,
 	States.IN_AIR:state_inair,
 	States.GLIDING:state_gliding,
-	States.GRINDING:state_grinding
+	States.GRINDING:state_grinding,
+	States.DROWNING:state_drowning
 }
 
 func _ready() -> void:
@@ -41,8 +42,9 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	_stateDict[_state].call(delta)
-	velocity = _targetVelocity
-	move_and_slide()
+	if (_state != States.DROWNING):
+		velocity = _targetVelocity
+		move_and_slide()
 
 func state_grounded(delta: float) -> void:
 	var direction: Vector3 = Vector3.ZERO
@@ -164,8 +166,9 @@ func state_gliding(delta: float):
 		_state = States.IN_AIR
 	if (is_on_floor()):	
 		_state = States.GROUNDED
-		
-	_meshPivot.look_at(position + velocity)
+	
+	if (velocity.x != 0 and velocity.z != 0):
+		_meshPivot.look_at(position + velocity)
 	
 	var tilt: float = (direction.y + 1.0) / 2
 	var maxFallSpeed: float = lerpf(_glidingDownMaxFallSpeed, _glidingUpMaxFallSpeed, tilt)
@@ -194,13 +197,13 @@ func state_gliding(delta: float):
 		_meshPivot.rotation.z = direction.x * _sideTiltVariation
 		
 		
-	_evilDebugLabel.text = str(maxFallSpeed) + "\n" + str(maxForwardSpeed) + "\n" + str(_targetVelocity)
+	#_evilDebugLabel.text = str(maxFallSpeed) + "\n" + str(maxForwardSpeed) + "\n" + str(_targetVelocity)
 	_meshPivot.rotation.x = -direction.y * _tiltVariation
 	
 @export_group("Grinding")
 var _rail: GrindRail
 @export var _grindOffset: float = 1.0
-@export var _grindSpeed: float = 10.0
+@export var _grindSpeed: float = 15.0
 var _grindDirection: int = 1
 func state_grinding(delta: float):
 	global_position = _rail._path.global_position
@@ -217,6 +220,9 @@ func state_grinding(delta: float):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
+		
+func state_drowning(_delta: float):
+	pass
 	
 	
 @export_group("Camera Controls")
@@ -233,6 +239,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 func rail_entered(body: Object, gr: GrindRail):
 	#global_position = gr.to_global(gr.curve.get_closest_point(global_position))
+	#if (body.name != "Player"):
+	#	_evilDebugLabel.text = body.name
 	if (_state != States.GRINDING):
 		gr.setInitialGrindPos(global_position)
 		_state = States.GRINDING
@@ -241,3 +249,7 @@ func rail_entered(body: Object, gr: GrindRail):
 			_grindDirection = -1
 		else:
 			_grindDirection = 1
+			
+func drown(body: Object):
+	velocity = Vector3.ZERO
+	_state = States.DROWNING

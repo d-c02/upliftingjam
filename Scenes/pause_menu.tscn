@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cntudamg7dyxc"]
+
+[ext_resource type="Script" uid="uid://de4xnag45pylp" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
+[ext_resource type="Material" uid="uid://bw8a71hcqykqo" path="res://Models/Materials/wipe.tres" id="3_1och7"]
+
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipe")]
+process_mode = 2
+layer = -1
+script = ExtResource("1_k0w1u")
+_transitionWipe = NodePath("CircleTransition")
+_material = ExtResource("3_1och7")
+
+[node name="CircleTransition" type="ColorRect" parent="."]
+material = ExtResource("3_1och7")
+offset_left = 23.0
+offset_top = 10.0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
