@@ -1,11 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://7ju22cm4hyvt"]
+[gd_scene load_steps=4 format=3 uid="uid://7ju22cm4hyvt"]
 
 [ext_resource type="Script" uid="uid://dvjpp1mp3aclq" path="res://Scenes/talk_zone.gd" id="1_fn6lg"]
+[ext_resource type="Texture2D" uid="uid://c7kqcs0niqcq1" path="res://Textures/f-export.png" id="2_qcrvj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
 
-[node name="TalkZone" type="Area3D"]
+[node name="TalkZone" type="Area3D" node_paths=PackedStringArray("_InteractIcon")]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_fn6lg")
+_InteractIcon = NodePath("InteractIcon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_v4tln")
+
+[node name="InteractIcon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4827571, 0)
+visible = false
+pixel_size = 0.001
+billboard = 1
+texture = ExtResource("2_qcrvj")

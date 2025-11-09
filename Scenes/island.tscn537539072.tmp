@@ -422,8 +422,7 @@ collision_mask = 2
 _player = NodePath("../Player")
 _pause_menu = NodePath("../PauseMenu")
 
-[node name="PauseMenu" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("4_30k4x")]
-_player = NodePath("../Player")
+[node name="PauseMenu" parent="." instance=ExtResource("4_30k4x")]
 
 [node name="CircleTransition" parent="PauseMenu" index="0"]
 offset_left = -4.0

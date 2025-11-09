@@ -1,19 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://cntudamg7dyxc"]
+[gd_scene load_steps=10 format=3 uid="uid://cntudamg7dyxc"]
 
 [ext_resource type="Script" uid="uid://de4xnag45pylp" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
-[ext_resource type="Material" uid="uid://bw8a71hcqykqo" path="res://Models/Materials/wipe.tres" id="3_1och7"]
+[ext_resource type="Material" uid="uid://bwsea65e7nfvl" path="res://Models/Materials/wipein.tres" id="2_k0w1u"]
+[ext_resource type="Texture2D" uid="uid://22pmmw8e4iyd" path="res://Textures/dialoguebox.png" id="3_wajdf"]
+[ext_resource type="FontFile" uid="uid://decl1q1lmwnju" path="res://Fonts/Cute Dino.ttf" id="4_f4asv"]
+[ext_resource type="Texture2D" uid="uid://csauias7sx6kw" path="res://Textures/jackinglantern.png" id="5_f4asv"]
+[ext_resource type="PackedScene" uid="uid://dlonflhkwxg8w" path="res://Scenes/dialogue_reader.tscn" id="6_myy0f"]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipe")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kryiu"]
+atlas = ExtResource("5_f4asv")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oppgv"]
+atlas = ExtResource("5_f4asv")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqntx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kryiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oppgv")
+}],
+"loop": true,
+"name": &"Winking",
+"speed": 2.0
+}]
+
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipeOut", "_transitionWipeIn", "_textBox", "_label", "FUCK_SHIT_FUCK_YOU")]
 process_mode = 2
 layer = -1
 script = ExtResource("1_k0w1u")
-_transitionWipe = NodePath("CircleTransition")
-_material = ExtResource("3_1och7")
+_transitionWipeOut = NodePath("CircleTransition")
+_transitionWipeIn = NodePath("CircleTransitionIn")
+_material = ExtResource("2_k0w1u")
+_materialIn = ExtResource("2_k0w1u")
+_textBox = NodePath("DialogueBox")
+_label = NodePath("DialogueBox/Label")
+FUCK_SHIT_FUCK_YOU = NodePath("GreenDialogue")
 
 [node name="CircleTransition" type="ColorRect" parent="."]
-material = ExtResource("3_1och7")
+visible = false
+material = ExtResource("2_k0w1u")
 offset_left = 23.0
 offset_top = 10.0
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
+
+[node name="CircleTransitionIn" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("2_k0w1u")
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1159.0
+offset_bottom = 654.0
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 88.0
+offset_top = 344.0
+offset_right = 1088.0
+offset_bottom = 644.0
+texture = ExtResource("3_wajdf")
+
+[node name="Label" type="Label" parent="DialogueBox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 58.0
+offset_right = 943.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.2, 0.26666668, 0.33333334, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.26666668, 0.33333334, 1)
+theme_override_fonts/font = ExtResource("4_f4asv")
+theme_override_font_sizes/font_size = 36
+autowrap_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueBox"]
+position = Vector2(918, 229)
+sprite_frames = SubResource("SpriteFrames_mqntx")
+animation = &"Winking"
+autoplay = "Winking"
+
+[node name="GreenDialogue" parent="." instance=ExtResource("6_myy0f")]

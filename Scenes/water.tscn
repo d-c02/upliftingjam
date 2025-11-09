@@ -33,6 +33,7 @@ subdivide_depth = 32
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gf5bf"]
 
 [node name="water" type="Area3D"]
+process_mode = 3
 script = ExtResource("1_slmpt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

@@ -1,23 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcb63cyd7qxid"]
+[gd_scene load_steps=5 format=3 uid="uid://dcb63cyd7qxid"]
 
 [ext_resource type="Script" uid="uid://cc5r76m0gtcep" path="res://Scenes/player.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://c3h548grnw7ws" path="res://Models/crow.glb" id="2_cvnsp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cvnsp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v0iea"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_v0iea"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0iea"]
-albedo_color = Color(0, 0.043137256, 0.6313726, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_v0iea"]
-material = SubResource("StandardMaterial3D_v0iea")
-size = Vector3(0.685, 0.37, 0.66)
-
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_camera", "_meshPivot", "_camera_pivot", "_evilDebugLabel")]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 15
+collision_mask = 15
 script = ExtResource("1_v0iea")
 _camera = NodePath("CameraPivot/SpringArm3D/Camera3D")
 _meshPivot = NodePath("MeshPivot")
@@ -38,14 +30,10 @@ spring_length = 7.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3841858e-07, 7.5000005)
 
 [node name="MeshPivot" type="Node3D" parent="."]
+process_mode = 3
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshPivot"]
-mesh = SubResource("CapsuleMesh_v0iea")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.454435, -0.20640302)
-mesh = SubResource("BoxMesh_v0iea")
+[node name="crow" parent="MeshPivot" instance=ExtResource("2_cvnsp")]
+transform = Transform3D(-0.55, 0, -4.8082526e-08, 0, 0.55, 0, 4.8082526e-08, 0, -0.55, 0, -1.0444049, 0)
 
 [node name="Label" type="Label" parent="."]
 visible = false
