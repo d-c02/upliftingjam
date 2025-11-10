@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-enum States {GROUNDED, IN_AIR, GRINDING, GLIDING, DROWNING}
+enum States {GROUNDED, IN_AIR, GRINDING, GLIDING, DROWNING, ROLLING}
 
 var _state: States = States.GROUNDED
 
@@ -30,7 +30,8 @@ var _stateDict: Dictionary[States, Callable] = {
 	States.IN_AIR:state_inair,
 	States.GLIDING:state_gliding,
 	States.GRINDING:state_grinding,
-	States.DROWNING:state_drowning
+	States.DROWNING:state_drowning,
+	States.ROLLING:state_rolling
 }
 
 func _ready() -> void:
@@ -65,6 +66,8 @@ func state_grounded(delta: float) -> void:
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
+	elif (Input.is_action_just_pressed("roll")):
+		initiate_roll()
 	if (direction.length() < 0.1):
 		direction = Vector3.ZERO;
 	elif (direction != Vector3.ZERO):
@@ -220,6 +223,51 @@ func state_grinding(delta: float):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
+		
+@export_group("Rolling")
+@export var _activeRollTime: float = 0.3
+@export var _curRollTime: float = 0
+@export var _rollSpeed: float = 15
+@export var _rollJumpSpeed: float = 9
+@export var _curRollAirTime: float = 0
+@export var _rollAirDelay: float = 0.15 #How long you need to be in the air before going into falling state
+var _curAirTime: float = 0
+@export var _slowdownConst: float = 4.0
+var _rollVelocity: Vector3 = Vector3.ZERO
+
+func initiate_roll():
+	_state = States.ROLLING
+	var direction: Vector3 = Vector3.ZERO
+	var tmpDir: Vector3 = Vector3(velocity.x, 0, velocity.z);
+	if (tmpDir.length() < 0.1):
+		direction = _meshPivot.global_transform.basis.z.normalized()
+		direction.x *= -1
+		direction.z *= -1
+	else:
+		direction = tmpDir.normalized();
+		#SET ANIMATION TO ROLL ONCE IT IS DONE CRACKER
+		_rollVelocity.x = direction.x * _rollSpeed + velocity.x / _slowdownConst
+		_rollVelocity.z = direction.z * _rollSpeed + velocity.z / _slowdownConst
+		_curRollTime = 0;
+		_meshPivot.look_at(position + direction, Vector3.UP);
+	
+	
+func state_rolling(delta:float):
+	if (_curRollTime > _activeRollTime and is_on_floor() and !Input.is_action_just_pressed("jump")):
+		_state = States.GROUNDED
+	if (!is_on_floor()):
+		_curRollAirTime += delta;
+		_rollVelocity.y -= _fallAcceleration * delta
+	else:
+		_curRollAirTime = 0;
+		_rollVelocity.y = 0;
+	if (Input.is_action_just_pressed("jump")):
+		_rollVelocity.y = 0;
+		_targetVelocity = Vector3(velocity.x, _jumpSpeed * 1.5, velocity.z);
+	_targetVelocity = Vector3(_rollVelocity.x, _targetVelocity.y + _rollVelocity.y, _rollVelocity.z);
+	if (Input.is_action_just_pressed("jump") or _curAirTime > _rollAirDelay):
+		_state = States.IN_AIR
+	_curRollTime += delta
 		
 func state_drowning(_delta: float):
 	pass
