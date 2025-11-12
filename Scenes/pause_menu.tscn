@@ -205,6 +205,7 @@ offset_left = 23.0
 offset_top = 10.0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="CircleTransitionIn" type="ColorRect" parent="."]
@@ -214,6 +215,7 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 1159.0
 offset_bottom = 654.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="DialogueBox" type="TextureRect" parent="."]

@@ -40,9 +40,9 @@ var _stateDict: Dictionary[States, Callable] = {
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
-		get_tree().quit()
+#func _process(delta: float) -> void:
+	#if Input.is_action_just_pressed("pause"):
+		#get_tree().quit()
 
 func _physics_process(delta: float) -> void:
 	_stateDict[_state].call(delta)
