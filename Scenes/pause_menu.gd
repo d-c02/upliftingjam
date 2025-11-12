@@ -35,6 +35,8 @@ var _curVoice: GlobalEnums.Voices = GlobalEnums.Voices.BUNGOO
 @export var _BungooVoice: DialogueReader
 @export var _DunkelVoice: DialogueReader
 @export var _YahieVoice: DialogueReader
+@export var _MeowgieVoice: DialogueReader
+@export var _GroegiVoice: DialogueReader
 
 var _dialogueQueue: Array[GlobalEnums.Dialogue]
 var _readingDialogue: bool = false
@@ -92,6 +94,10 @@ func _process(delta: float) -> void:
 							_YahieVoice.Speak(aword.length(), true)
 						elif _curVoice == GlobalEnums.Voices.DUNKEL:
 							_DunkelVoice.Speak(aword.length(), true)
+						elif _curVoice == GlobalEnums.Voices.GROEGI:
+							_GroegiVoice.Speak(aword.length(), true)
+						elif _curVoice == GlobalEnums.Voices.MEOWGIE:
+							_MeowgieVoice.Speak(aword.length(), true)
 					else:
 						if _curVoice == GlobalEnums.Voices.BUNGOO:
 							_BungooVoice.Speak(aword.length())
@@ -99,6 +105,10 @@ func _process(delta: float) -> void:
 							_YahieVoice.Speak(aword.length())
 						elif _curVoice == GlobalEnums.Voices.DUNKEL:
 							_DunkelVoice.Speak(aword.length())
+						elif _curVoice == GlobalEnums.Voices.GROEGI:
+							_GroegiVoice.Speak(aword.length())
+						elif _curVoice == GlobalEnums.Voices.MEOWGIE:
+							_MeowgieVoice.Speak(aword.length())
 					
 				_label.text += _curDialogue.left(1)
 				_curDialogue = _curDialogue.substr(1)

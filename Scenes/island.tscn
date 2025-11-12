@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=4 uid="uid://bxkveb88rr4xj"]
+[gd_scene load_steps=73 format=4 uid="uid://bxkveb88rr4xj"]
 
 [ext_resource type="PackedScene" uid="uid://dcb63cyd7qxid" path="res://Scenes/player.tscn" id="2_m582m"]
 [ext_resource type="PackedScene" uid="uid://bdr7j63jp2aqe" path="res://Scenes/water.tscn" id="3_81x60"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bsytpirkgdxev" path="res://Scenes/windmill_switch.tscn" id="10_okkps"]
 [ext_resource type="PackedScene" uid="uid://0tp5wcbdkb5" path="res://Scenes/coin.tscn" id="11_i0wwn"]
 [ext_resource type="PackedScene" uid="uid://cce6irwpemprd" path="res://Scenes/yahie.tscn" id="12_xc46f"]
-[ext_resource type="PackedScene" uid="uid://8r603thfcn4w" path="res://Scenes/shop.tscn" id="13_b640e"]
 [ext_resource type="PackedScene" uid="uid://ninhnjyt5gfr" path="res://Scenes/pumpkin.tscn" id="14_cjy1e"]
+[ext_resource type="Script" uid="uid://cgjrgu4a0xhat" path="res://Scenes/shop.gd" id="14_nbdts"]
+[ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="15_87y82"]
+[ext_resource type="PackedScene" uid="uid://rhspf4o428j" path="res://Models/Kitty_update.glb" id="16_5ec47"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oxod3"]
 sky_top_color = Color(0.08627451, 0.050980393, 0.0627451, 1)
@@ -810,7 +812,7 @@ size = Vector3(9.966064, 1, 12.1440735)
 
 [sub_resource type="Curve3D" id="Curve3D_cdoyj"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.6080494, -1.6769774, -4.7975082, -1.4702473, -1.2261811, -2.846262, 1.4702473, 1.2261811, 2.846262, 0.6176338, 1.0718694, 4.2896805),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.6080494, -1.1349554, -4.7975082, -1.4702473, -1.2261811, -2.846262, 1.4702473, 1.2261811, 2.846262, 0.6176338, 1.0718694, 4.2896805),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -929,6 +931,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_nbdts"]
 material = SubResource("StandardMaterial3D_ts47d")
 size = Vector3(12.235, 3.21, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
+radius = 2.38074
 
 [node name="Island" type="Node3D"]
 
@@ -1123,7 +1128,7 @@ transform = Transform3D(1, 0, -4.4703484e-08, -2.9802322e-08, 1, 0, 2.9802322e-0
 mesh = SubResource("SphereMesh_cjy1e")
 
 [node name="Light8" type="PathFollow3D" parent="MainIsland/PartyPlatform/Platform/stringLights"]
-transform = Transform3D(0.3845631, -0.92268616, 0.02725898, 0.9222214, 0.3827539, -0.05467244, 0.040012613, 0.046164464, 0.99811774, 15.611917, -1.4161919, -2.3645499)
+transform = Transform3D(0.3845631, -0.92268616, 0.02725896, 0.9222214, 0.3827539, -0.054672405, 0.040012613, 0.046164464, 0.9981171, 15.611917, -1.4161919, -2.3645499)
 visible = false
 progress = 23.64
 
@@ -1176,6 +1181,7 @@ spot_range = 13.991
 
 [node name="BungooDance" type="Node3D" parent="MainIsland/PartyPlatform"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 3.2949605, 3.4109755)
+visible = false
 
 [node name="Armature_002" type="Node3D" parent="MainIsland/PartyPlatform/BungooDance"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5494537, 0)
@@ -1266,12 +1272,14 @@ _dialogQueueing = Array[int]([2])
 
 [node name="CollisionShape3D" parent="MainIsland/PartyPlatform/BungooDance/TalkZone" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9972315, 0)
+disabled = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MainIsland/PartyPlatform/BungooDance"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MainIsland/PartyPlatform/BungooDance/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.281705, 0)
 shape = SubResource("CapsuleShape3D_oxod3")
+disabled = true
 
 [node name="YahieDance" type="Node3D" parent="MainIsland/PartyPlatform"]
 transform = Transform3D(-0.19084173, 0, 0.46214655, 0, 0.5, 0, -0.46214655, 0, -0.19084173, -2.7657204, 3.2949605, 11.132345)
@@ -1519,7 +1527,7 @@ _area = NodePath("Area3D")
 metadata/_edit_group_ = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="MainIsland/BungooHouse/grind_rail"]
-transform = Transform3D(-0.9302861, 0.0811872, 0.3576935, 0, 0.97517455, -0.22134185, -0.36679173, -0.20591341, -0.90721047, 1.6080494, -1.6769774, -4.7975082)
+transform = Transform3D(-0.9302861, 0.05305318, 0.3629347, 1.8626156e-09, 0.98946285, -0.14463978, -0.36679173, -0.13455768, -0.92050374, 1.6080494, -1.1349554, -4.7975082)
 loop = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MainIsland/BungooHouse/grind_rail/PathFollow3D"]
@@ -1595,6 +1603,8 @@ _lights = [NodePath("../MainIsland/PartyPlatform/Platform/stringLights/Light1"),
 _dunkel = NodePath("../MainIsland/Dunkel")
 _player = NodePath("../Player")
 _pauseMenu = NodePath("../PauseMenu")
+_dialogQueueing = Array[int]([10])
+_voice = 4
 
 [node name="Coin" parent="." node_paths=PackedStringArray("_player") instance=ExtResource("11_i0wwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3833923, -19.539268)
@@ -1619,11 +1629,28 @@ _FCollider = NodePath("../MainIsland/PartyPlatform/YahieDance/StaticBody3D/Colli
 _player = NodePath("../Player")
 _pauseMenu = NodePath("../PauseMenu")
 
-[node name="Shop" parent="." node_paths=PackedStringArray("_yahie", "_player", "_pauseMenu") instance=ExtResource("13_b640e")]
+[node name="Shop" type="Area3D" parent="." node_paths=PackedStringArray("_yahie", "_player", "_pauseMenu", "_InteractIcon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.962629, 4.448613, 22.589973)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("14_nbdts")
 _yahie = NodePath("../Yahie")
 _player = NodePath("../Player")
 _pauseMenu = NodePath("../PauseMenu")
+_InteractIcon = NodePath("InteractIcon")
+_voice = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shop"]
+shape = SubResource("SphereShape3D_v4tln")
+
+[node name="InteractIcon" type="Sprite3D" parent="Shop"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7076283, 0)
+visible = false
+billboard = 1
+texture = ExtResource("15_87y82")
+
+[node name="Meowgi" parent="Shop" instance=ExtResource("16_5ec47")]
+transform = Transform3D(0.11629834, 0, 0.48628664, 0.034048636, 0.49877286, -0.008142934, -0.48509315, 0.03500881, 0.11601292, 0, -0.755332, 0)
 
 [node name="Pumpkin" parent="." node_paths=PackedStringArray("_player", "_pauseMenu") instance=ExtResource("14_cjy1e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9351454, 5.5034285, 14.252167)

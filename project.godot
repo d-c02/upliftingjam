@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GlobalEnums="*res://global_consts.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [file_customization]
 
 folder_colors={
