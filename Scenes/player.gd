@@ -139,9 +139,10 @@ func state_inair(delta: float) -> void:
 		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Falling"
 		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Falling"
 	if (Input.is_action_just_pressed("glide")):
-		_state = States.GLIDING
-		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Gliding"
-		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Gliding"
+		if (_holding == false):
+			_state = States.GLIDING
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Gliding"
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Gliding"
 	if (direction.length() < 0.1):
 		direction = Vector3.ZERO;
 	elif (direction != Vector3.ZERO):
