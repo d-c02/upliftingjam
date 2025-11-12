@@ -1128,7 +1128,7 @@ transform = Transform3D(1, 0, -4.4703484e-08, -2.9802322e-08, 1, 0, 2.9802322e-0
 mesh = SubResource("SphereMesh_cjy1e")
 
 [node name="Light8" type="PathFollow3D" parent="MainIsland/PartyPlatform/Platform/stringLights"]
-transform = Transform3D(0.3845631, -0.92268616, 0.02725896, 0.9222214, 0.3827539, -0.054672405, 0.040012613, 0.046164464, 0.9981171, 15.611917, -1.4161919, -2.3645499)
+transform = Transform3D(0.3845631, -0.92268616, 0.027258955, 0.9222214, 0.3827539, -0.05467239, 0.040012613, 0.046164464, 0.99811685, 15.611917, -1.4161919, -2.3645499)
 visible = false
 progress = 23.64
 

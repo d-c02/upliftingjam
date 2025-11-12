@@ -342,7 +342,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Prevent the camera from rotating too far up or down.
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit / 2)
 		_camera_pivot.rotation.y += -event.relative.x * mouse_sensitivity
-		
+
 func rail_entered(body: Object, gr: GrindRail):
 	#global_position = gr.to_global(gr.curve.get_closest_point(global_position))
 	#if (body.name != "Player"):
