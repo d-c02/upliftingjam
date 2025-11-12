@@ -26,6 +26,7 @@ window/stretch/mode="viewport"
 [file_customization]
 
 folder_colors={
+"res://Exports/": "green",
 "res://Fonts/": "purple",
 "res://Models/": "orange",
 "res://Scenes/": "red",
