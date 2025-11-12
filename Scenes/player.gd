@@ -5,10 +5,12 @@ class_name Player
 enum States {GROUNDED, IN_AIR, GRINDING, GLIDING, DROWNING, ROLLING}
 
 var _state: States = States.GROUNDED
+var _coins: int = 0
 
 @export var _camera: Camera3D
 @export var _meshPivot: Node3D
 @export var _camera_pivot = Node3D
+@export var _AnimationTree: AnimationTree
 
 @export_group("Grounded")
 @export var _jumpSpeed: float = 10.0
@@ -62,11 +64,29 @@ func state_grounded(delta: float) -> void:
 		direction -= _cameraDifferenceVector * Input.get_action_strength("move_back");
 	if (Input.is_action_pressed("move_forward")):
 		direction += _cameraDifferenceVector * Input.get_action_strength("move_forward");
+	if (direction.length() > 0):
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Walking"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Walking"
+		_AnimationTree.set("parameters/TimeScale/scale", 2.0)
+	else:
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Idle"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Idle"
+		_AnimationTree.set("parameters/TimeScale/scale", 1.0)
+	
+	if (Input.is_action_just_pressed("pick_up")):
+		if _holding:
+			drop_item()
+	
 	if (Input.is_action_just_pressed("jump")):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Jumping"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Jumping"
+		_AnimationTree.set("parameters/TimeScale/scale", 1.0)
+		_falling = false
 	elif (Input.is_action_just_pressed("roll")):
+		_AnimationTree.set("parameters/TimeScale/scale", 1.0)
 		initiate_roll()
 	if (direction.length() < 0.1):
 		direction = Vector3.ZERO;
@@ -90,7 +110,11 @@ func state_grounded(delta: float) -> void:
 			_targetVelocity.z = velocity.z + (float)(_groundAcceleration * delta * direction.z);
 	if (!is_on_floor()):
 		_state = States.IN_AIR
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Falling"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Falling"
+		_AnimationTree.set("parameters/TimeScale/scale", 1.0)
 	
+var _falling: bool = false
 func state_inair(delta: float) -> void:
 	var direction: Vector3 = Vector3.ZERO
 	#if !(Input.is_action_pressed("move_forward") or Input.is_action_pressed("move_back") or Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
@@ -108,8 +132,14 @@ func state_inair(delta: float) -> void:
 		direction += _cameraDifferenceVector * Input.get_action_strength("move_forward");
 	if (Input.is_action_just_released("jump")):
 		_floatFall = false
+	if (_falling == false and velocity.y < 0):
+		_falling = true
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Falling"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Falling"
 	if (Input.is_action_just_pressed("glide")):
 		_state = States.GLIDING
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Gliding"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Gliding"
 	if (direction.length() < 0.1):
 		direction = Vector3.ZERO;
 	elif (direction != Vector3.ZERO):
@@ -138,6 +168,8 @@ func state_inair(delta: float) -> void:
 	if is_on_floor():
 		_targetVelocity.y = 0
 		_state = States.GROUNDED
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Idle"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Idle"
 		
 
 @export_group("Gliding")
@@ -167,8 +199,12 @@ func state_gliding(delta: float):
 		direction.y += 1
 	if (Input.is_action_just_released("glide")):
 		_state = States.IN_AIR
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Falling"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Falling"
 	if (is_on_floor()):	
 		_state = States.GROUNDED
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Idle"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Idle"
 	
 	if (velocity.x != 0 and velocity.z != 0):
 		_meshPivot.look_at(position + velocity)
@@ -213,16 +249,25 @@ func state_grinding(delta: float):
 	global_position.y += _grindOffset
 	_meshPivot.rotation = _rail._path.rotation
 	if (_grindDirection < 0):
-		_meshPivot.rotation_degrees.y += 180
+		#_meshPivot.rotation_degrees.y += 180
+		_meshPivot.look_at(_meshPivot.global_position + _rail.getBackwardVector(), Vector3.UP)
+	else:
+		_meshPivot.look_at(_meshPivot.global_position + _rail.getForwardVector(), Vector3.UP)
 	_rail._path.progress += _grindDirection * _grindSpeed * delta
 	if (Input.is_action_just_pressed("jump")):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
-	if (_rail._path.progress_ratio >= 1.0 and _rail._path.loop == false):
+		_falling = false
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Jumping"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Jumping"
+	if (not _rail._path.loop) and (_rail._path.progress_ratio >= 1.0 or _rail._path.progress <= 0):
 		_targetVelocity.y = _jumpSpeed;
 		_floatFall = true
 		_state = States.IN_AIR
+		_falling = false
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Jumping"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Jumping"
 		
 @export_group("Rolling")
 @export var _activeRollTime: float = 0.3
@@ -237,6 +282,8 @@ var _rollVelocity: Vector3 = Vector3.ZERO
 
 func initiate_roll():
 	_state = States.ROLLING
+	(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Rolling"
+	(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Rolling"
 	var direction: Vector3 = Vector3.ZERO
 	var tmpDir: Vector3 = Vector3(velocity.x, 0, velocity.z);
 	if (tmpDir.length() < 0.1):
@@ -255,6 +302,8 @@ func initiate_roll():
 func state_rolling(delta:float):
 	if (_curRollTime > _activeRollTime and is_on_floor() and !Input.is_action_just_pressed("jump")):
 		_state = States.GROUNDED
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Idle"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Idle"
 	if (!is_on_floor()):
 		_curRollAirTime += delta;
 		_rollVelocity.y -= _fallAcceleration * delta
@@ -267,6 +316,13 @@ func state_rolling(delta:float):
 	_targetVelocity = Vector3(_rollVelocity.x, _targetVelocity.y + _rollVelocity.y, _rollVelocity.z);
 	if (Input.is_action_just_pressed("jump") or _curAirTime > _rollAirDelay):
 		_state = States.IN_AIR
+		if (Input.is_action_just_pressed("jump")):
+			_falling = false
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Jumping"
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Jumping"
+		else:
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Falling"
+			(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Falling"
 	_curRollTime += delta
 		
 func state_drowning(_delta: float):
@@ -291,6 +347,8 @@ func rail_entered(body: Object, gr: GrindRail):
 	#	_evilDebugLabel.text = body.name
 	if (_state != States.GRINDING):
 		gr.setInitialGrindPos(global_position)
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Grinding"
+		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Grinding"
 		_state = States.GRINDING
 		_rail = gr
 		if _rail.getBackwardVector().dot(velocity.normalized()) > 0:
@@ -301,3 +359,32 @@ func rail_entered(body: Object, gr: GrindRail):
 func drown(body: Object):
 	velocity = Vector3.ZERO
 	_state = States.DROWNING
+	(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("NonHoldingAnim").animation = "Drowning"
+	(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Drowning"
+	
+@export_group("Holding")
+@export var _pumpkin: Node3D
+var _holding = false
+var _pumpkinInteractable: Pumpkin
+func hold_item(pumpkin: Pumpkin):
+	_pumpkin.visible = true
+	_holding = true
+	_pumpkinInteractable = pumpkin
+	_AnimationTree.set("parameters/IsHolding/blend_amount", 1.0)
+	
+func drop_item():
+	_pumpkin.visible = false
+	_holding = false
+	_pumpkinInteractable.drop()
+	_AnimationTree.set("parameters/IsHolding/blend_amount", 0.0)
+
+@export_group("SFX")
+@export var _coinSFX: AudioStreamPlayer
+func collect_coin():
+	_coinSFX.play()
+	_coins += 1
+
+@export_group("Equips")
+@export var _hat: Node3D
+func wear_hat():
+	_hat.visible = true

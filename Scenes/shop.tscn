@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://8r603thfcn4w"]
+
+[ext_resource type="Script" uid="uid://cgjrgu4a0xhat" path="res://Scenes/shop.gd" id="1_io27d"]
+[ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="2_fdj0q"]
+[ext_resource type="Material" uid="uid://cx8hgfrc5kr8v" path="res://Models/Materials/glowy.tres" id="3_k6jq0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
+radius = 2.38074
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_83ns7"]
+material = ExtResource("3_k6jq0")
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_k6yux"]
+material = ExtResource("3_k6jq0")
+
+[node name="Shop" type="Area3D" node_paths=PackedStringArray("_InteractIcon")]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_io27d")
+_InteractIcon = NodePath("InteractIcon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_v4tln")
+
+[node name="InteractIcon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7076283, 0)
+visible = false
+billboard = 1
+texture = ExtResource("2_fdj0q")
+
+[node name="Cone" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4291258, 0)
+mesh = SubResource("CapsuleMesh_83ns7")
+
+[node name="Point" type="MeshInstance3D" parent="Cone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3434634, 0)
+mesh = SubResource("SphereMesh_k6yux")
+skeleton = NodePath("../..")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ninhnjyt5gfr"]
+
+[ext_resource type="Script" uid="uid://bbnl2ahw52n45" path="res://Scenes/pumpkin.gd" id="1_syw7a"]
+[ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="2_twh7v"]
+[ext_resource type="PackedScene" uid="uid://dwxc5vy1cresl" path="res://Models/Pumpkin.glb" id="3_tgifl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
+radius = 2.38074
+
+[node name="Pumpkin" type="Area3D" node_paths=PackedStringArray("_cShape", "_InteractIcon")]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_syw7a")
+_cShape = NodePath("CollisionShape3D")
+_InteractIcon = NodePath("InteractIcon")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_v4tln")
+
+[node name="InteractIcon" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.310414, 0)
+visible = false
+billboard = 1
+texture = ExtResource("2_twh7v")
+
+[node name="Pumpkin" parent="." instance=ExtResource("3_tgifl")]

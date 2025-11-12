@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c3h548grnw7ws"
-path="res://.godot/imported/crow.glb-08064802ed33724bcef6fa76169396b3.scn"
+uid="uid://rhspf4o428j"
+path="res://.godot/imported/Kitty_update.glb-a7bdfc011434aa043fbe4c16a503e9c0.scn"
 
 [deps]
 
-source_file="res://Models/crow.glb"
-dest_files=["res://.godot/imported/crow.glb-08064802ed33724bcef6fa76169396b3.scn"]
+source_file="res://Models/Kitty_update.glb"
+dest_files=["res://.godot/imported/Kitty_update.glb-a7bdfc011434aa043fbe4c16a503e9c0.scn"]
 
 [params]
 

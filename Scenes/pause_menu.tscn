@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cntudamg7dyxc"]
+[gd_scene load_steps=89 format=3 uid="uid://cntudamg7dyxc"]
 
 [ext_resource type="Script" uid="uid://de4xnag45pylp" path="res://Scenes/pause_menu.gd" id="1_k0w1u"]
 [ext_resource type="Material" uid="uid://bwsea65e7nfvl" path="res://Models/Materials/wipein.tres" id="2_k0w1u"]
@@ -6,6 +6,85 @@
 [ext_resource type="FontFile" uid="uid://decl1q1lmwnju" path="res://Fonts/Cute Dino.ttf" id="4_f4asv"]
 [ext_resource type="Texture2D" uid="uid://csauias7sx6kw" path="res://Textures/jackinglantern.png" id="5_f4asv"]
 [ext_resource type="PackedScene" uid="uid://dlonflhkwxg8w" path="res://Scenes/dialogue_reader.tscn" id="6_myy0f"]
+[ext_resource type="Script" uid="uid://vlkwpq4uttq3" path="res://Scenes/voice.gd" id="7_ei17m"]
+[ext_resource type="AudioStream" uid="uid://d0hlxt1s2gu8w" path="res://Sounds/Voices/Yahie/Slow/yahie_single_a.wav" id="8_y6obr"]
+[ext_resource type="AudioStream" uid="uid://cgkb1g4glao63" path="res://Sounds/Voices/Yahie/Slow/yahie_single_b.wav" id="9_jap88"]
+[ext_resource type="AudioStream" uid="uid://bym45pmmlfqaj" path="res://Sounds/Voices/Yahie/Slow/yahie_single_c.wav" id="10_dvt6c"]
+[ext_resource type="AudioStream" uid="uid://0gnawd1qwcnt" path="res://Sounds/Voices/Yahie/Slow/yahie_single_d.wav" id="11_75qg2"]
+[ext_resource type="AudioStream" uid="uid://fmonm7a8qkwc" path="res://Sounds/Voices/Yahie/Slow/yahie_single_e.wav" id="12_m6xd5"]
+[ext_resource type="AudioStream" uid="uid://d1bcs7a14rkj2" path="res://Sounds/Voices/Yahie/Slow/yahie_double_a.wav" id="13_rpth0"]
+[ext_resource type="AudioStream" uid="uid://ds7g7qlot62x3" path="res://Sounds/Voices/Yahie/Slow/yahie_double_b.wav" id="14_xppx3"]
+[ext_resource type="AudioStream" uid="uid://xyjv5ac5cetw" path="res://Sounds/Voices/Yahie/Slow/yahie_double_c.wav" id="15_bdpuf"]
+[ext_resource type="AudioStream" uid="uid://crropet8cd8ho" path="res://Sounds/Voices/Yahie/Slow/yahie_double_d.wav" id="16_nqkbc"]
+[ext_resource type="AudioStream" uid="uid://b5mtyph2xd3xq" path="res://Sounds/Voices/Yahie/Slow/yahie_double_e.wav" id="17_pto6i"]
+[ext_resource type="AudioStream" uid="uid://bmu818a0os80s" path="res://Sounds/Voices/Yahie/Slow/yahie_double_f.wav" id="18_oll77"]
+[ext_resource type="AudioStream" uid="uid://dqpbgsrcgbhpc" path="res://Sounds/Voices/Yahie/Slow/yahie_double_g.wav" id="19_amlpt"]
+[ext_resource type="AudioStream" uid="uid://bnmm1w55tvhb" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_a.wav" id="20_45jvy"]
+[ext_resource type="AudioStream" uid="uid://efr6papbfw1j" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_b.wav" id="21_xgwg5"]
+[ext_resource type="AudioStream" uid="uid://ddi1deft3lej3" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_c.wav" id="22_3x2hs"]
+[ext_resource type="AudioStream" uid="uid://jr1lptucn3mm" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_d.wav" id="23_67vj6"]
+[ext_resource type="AudioStream" uid="uid://bej4e0ecx3nn4" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_e.wav" id="24_fuau7"]
+[ext_resource type="AudioStream" uid="uid://dptovf2s3533x" path="res://Sounds/Voices/Yahie/Fast/yahie_single_a.wav" id="25_3exq2"]
+[ext_resource type="AudioStream" uid="uid://cphajta8vjav" path="res://Sounds/Voices/Yahie/Fast/yahie_single_b.wav" id="26_5wjnn"]
+[ext_resource type="AudioStream" uid="uid://dihty248b557e" path="res://Sounds/Voices/Yahie/Fast/yahie_single_c.wav" id="27_gn3v8"]
+[ext_resource type="AudioStream" uid="uid://beo6ps267kc00" path="res://Sounds/Voices/Yahie/Fast/yahie_single_d.wav" id="28_cob54"]
+[ext_resource type="AudioStream" uid="uid://c7nudyelyrvsa" path="res://Sounds/Voices/Yahie/Fast/yahie_single_e.wav" id="29_agquf"]
+[ext_resource type="AudioStream" uid="uid://bxji4r6npanpw" path="res://Sounds/Voices/Yahie/Fast/yahie_double_a.wav" id="30_o0ctt"]
+[ext_resource type="AudioStream" uid="uid://frp7j3xtx4me" path="res://Sounds/Voices/Yahie/Fast/yahie_double_b.wav" id="31_ti0gt"]
+[ext_resource type="AudioStream" uid="uid://11leulcdest" path="res://Sounds/Voices/Yahie/Fast/yahie_double_c.wav" id="32_4eueq"]
+[ext_resource type="AudioStream" uid="uid://ctsurgdpancao" path="res://Sounds/Voices/Yahie/Fast/yahie_double_d.wav" id="33_ca1ge"]
+[ext_resource type="AudioStream" uid="uid://rubvwddpfy7d" path="res://Sounds/Voices/Yahie/Fast/yahie_double_e.wav" id="34_ueksf"]
+[ext_resource type="AudioStream" uid="uid://2somjyu118sh" path="res://Sounds/Voices/Yahie/Fast/yahie_double_f.wav" id="35_gfrmu"]
+[ext_resource type="AudioStream" uid="uid://x5kem2she3m4" path="res://Sounds/Voices/Yahie/Fast/yahie_double_g.wav" id="36_e43o8"]
+[ext_resource type="AudioStream" uid="uid://cojt08qg6xn0o" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_a.wav" id="37_3xaai"]
+[ext_resource type="AudioStream" uid="uid://dlabincekgfme" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_b.wav" id="38_g5lqu"]
+[ext_resource type="AudioStream" uid="uid://cq0234x07r8l2" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_c.wav" id="39_6ryxx"]
+[ext_resource type="AudioStream" uid="uid://ljch0wuvktkg" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_d.wav" id="40_eouy1"]
+[ext_resource type="AudioStream" uid="uid://bujphs3gqx1gi" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_e.wav" id="41_gsrqv"]
+[ext_resource type="AudioStream" uid="uid://cmxa7jf0r4xi7" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_a.wav" id="42_kaopu"]
+[ext_resource type="AudioStream" uid="uid://bi3xrbdea1jyt" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_b.wav" id="43_uwpui"]
+[ext_resource type="AudioStream" uid="uid://b5x20jauc82sf" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_c.wav" id="44_1353q"]
+[ext_resource type="AudioStream" uid="uid://dujepuiak0ds7" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_d.wav" id="45_i7duc"]
+[ext_resource type="AudioStream" uid="uid://c3lfwd4hcqvag" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_e.wav" id="46_dqfg4"]
+[ext_resource type="AudioStream" uid="uid://e6r2qseywmia" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_f.wav" id="47_hmjvm"]
+[ext_resource type="AudioStream" uid="uid://bkr1gpm3r4117" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_g.wav" id="48_b0sbh"]
+[ext_resource type="AudioStream" uid="uid://draeiww2udcsg" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_h.wav" id="49_yqt7e"]
+[ext_resource type="AudioStream" uid="uid://bycsf72t85c3a" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_i.wav" id="50_xa2a4"]
+[ext_resource type="AudioStream" uid="uid://dvmqu4m1yw1pf" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_j.wav" id="51_sj566"]
+[ext_resource type="AudioStream" uid="uid://bepsajvxf85t2" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_a.wav" id="52_lh8s1"]
+[ext_resource type="AudioStream" uid="uid://d3pkhgo3nc6ju" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_b.wav" id="53_m17r8"]
+[ext_resource type="AudioStream" uid="uid://0jaek7cbddtw" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_c.wav" id="54_1kl8s"]
+[ext_resource type="AudioStream" uid="uid://dnv0tnpiscaae" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_d.wav" id="55_6ytif"]
+[ext_resource type="AudioStream" uid="uid://eps6esrahq7h" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_e.wav" id="56_or3nd"]
+[ext_resource type="AudioStream" uid="uid://nw5fahucwla0" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_f.wav" id="57_54erv"]
+[ext_resource type="AudioStream" uid="uid://rgdlhkwiqdum" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_g.wav" id="58_rjc85"]
+[ext_resource type="AudioStream" uid="uid://b73hyk0jotb87" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_h.wav" id="59_533y0"]
+[ext_resource type="AudioStream" uid="uid://l0xj6ainfi0o" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_a.wav" id="60_cmmdo"]
+[ext_resource type="AudioStream" uid="uid://cqfox1eiy1mig" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_b.wav" id="61_x0lis"]
+[ext_resource type="AudioStream" uid="uid://c4g81alpfwogt" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_c.wav" id="62_67mlk"]
+[ext_resource type="AudioStream" uid="uid://c4r24r21qwcr5" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_d.wav" id="63_s0ix6"]
+[ext_resource type="AudioStream" uid="uid://bxwyq00f0jnbr" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_a.wav" id="64_nyewt"]
+[ext_resource type="AudioStream" uid="uid://dooc2us2x2a2n" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_b.wav" id="65_84tad"]
+[ext_resource type="AudioStream" uid="uid://cvp50snoplk7s" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_c.wav" id="66_purgx"]
+[ext_resource type="AudioStream" uid="uid://b6vigjpx7gs2m" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_d.wav" id="67_2qqn6"]
+[ext_resource type="AudioStream" uid="uid://ces3w7e0oak0k" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_e.wav" id="68_jg40o"]
+[ext_resource type="AudioStream" uid="uid://db0p4k44xlvtg" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_f.wav" id="69_emewb"]
+[ext_resource type="AudioStream" uid="uid://c2fovva0gube" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_g.wav" id="70_3p511"]
+[ext_resource type="AudioStream" uid="uid://o35068l1c8p0" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_h.wav" id="71_jsax3"]
+[ext_resource type="AudioStream" uid="uid://c0mn8583uy2p2" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_i.wav" id="72_54ln8"]
+[ext_resource type="AudioStream" uid="uid://cpo15qypbll4o" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_j.wav" id="73_tfub3"]
+[ext_resource type="AudioStream" uid="uid://bfd6t4n1xou7o" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_a.wav" id="74_2t2y2"]
+[ext_resource type="AudioStream" uid="uid://cj7q2jkfv5ek1" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_b.wav" id="75_b54rj"]
+[ext_resource type="AudioStream" uid="uid://tmjhlb75hyxf" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_c.wav" id="76_v6307"]
+[ext_resource type="AudioStream" uid="uid://mxs17i6lc14c" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_d.wav" id="77_2wm5m"]
+[ext_resource type="AudioStream" uid="uid://dhf0ovqfadqvs" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_e.wav" id="78_kdkwm"]
+[ext_resource type="AudioStream" uid="uid://d275fy1jmk8ya" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_f.wav" id="79_ed6uc"]
+[ext_resource type="AudioStream" uid="uid://dstghhv0lf02j" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_g.wav" id="80_qjcef"]
+[ext_resource type="AudioStream" uid="uid://bfwr2xh2of63c" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_h.wav" id="81_r47u1"]
+[ext_resource type="AudioStream" uid="uid://qxa1p2xelteh" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_a.wav" id="82_nu4gy"]
+[ext_resource type="AudioStream" uid="uid://bf58lpjg3grh1" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_b.wav" id="83_4gwjr"]
+[ext_resource type="AudioStream" uid="uid://etx8p3hcj0dx" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_c.wav" id="84_vextc"]
+[ext_resource type="AudioStream" uid="uid://cjol3ddu10tao" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_d.wav" id="85_t2di7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kryiu"]
 atlas = ExtResource("5_f4asv")
@@ -29,7 +108,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipeOut", "_transitionWipeIn", "_textBox", "_label", "FUCK_SHIT_FUCK_YOU")]
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipeOut", "_transitionWipeIn", "_textBox", "_label", "_BungooVoice", "_DunkelVoice", "_YahieVoice")]
 process_mode = 2
 layer = -1
 script = ExtResource("1_k0w1u")
@@ -39,7 +118,9 @@ _material = ExtResource("2_k0w1u")
 _materialIn = ExtResource("2_k0w1u")
 _textBox = NodePath("DialogueBox")
 _label = NodePath("DialogueBox/Label")
-FUCK_SHIT_FUCK_YOU = NodePath("GreenDialogue")
+_BungooVoice = NodePath("BungooDialogue")
+_DunkelVoice = NodePath("DunkelDialogue")
+_YahieVoice = NodePath("YahieDialogue")
 
 [node name="CircleTransition" type="ColorRect" parent="."]
 visible = false
@@ -87,4 +168,288 @@ sprite_frames = SubResource("SpriteFrames_mqntx")
 animation = &"Winking"
 autoplay = "Winking"
 
-[node name="GreenDialogue" parent="." instance=ExtResource("6_myy0f")]
+[node name="BungooDialogue" parent="." instance=ExtResource("6_myy0f")]
+
+[node name="YahieDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_ei17m")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="YahieDialogue"]
+
+[node name="Short" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieSingleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("8_y6obr")
+
+[node name="YahieSingleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("9_jap88")
+
+[node name="YahieSingleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("10_dvt6c")
+
+[node name="YahieSingleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("11_75qg2")
+
+[node name="YahieSingleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("12_m6xd5")
+
+[node name="Med" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieDoubleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("13_rpth0")
+
+[node name="YahieDoubleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("14_xppx3")
+
+[node name="YahieDoubleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("15_bdpuf")
+
+[node name="YahieDoubleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("16_nqkbc")
+
+[node name="YahieDoubleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("17_pto6i")
+
+[node name="YahieDoubleF" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("18_oll77")
+
+[node name="YahieDoubleG" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("19_amlpt")
+
+[node name="Long" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieTripleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("20_45jvy")
+
+[node name="YahieTripleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("21_xgwg5")
+
+[node name="YahieTripleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("22_3x2hs")
+
+[node name="YahieTripleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("23_67vj6")
+
+[node name="YahieTripleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("24_fuau7")
+
+[node name="Fast" type="Node" parent="YahieDialogue"]
+
+[node name="Short" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieSingleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("25_3exq2")
+
+[node name="YahieSingleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("26_5wjnn")
+
+[node name="YahieSingleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("27_gn3v8")
+
+[node name="YahieSingleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("28_cob54")
+
+[node name="YahieSingleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("29_agquf")
+
+[node name="Med" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieDoubleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("30_o0ctt")
+
+[node name="YahieDoubleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("31_ti0gt")
+
+[node name="YahieDoubleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("32_4eueq")
+
+[node name="YahieDoubleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("33_ca1ge")
+
+[node name="YahieDoubleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("34_ueksf")
+
+[node name="YahieDoubleF" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("35_gfrmu")
+
+[node name="YahieDoubleG" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("36_e43o8")
+
+[node name="Long" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieTripleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("37_3xaai")
+
+[node name="YahieTripleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("38_g5lqu")
+
+[node name="YahieTripleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("39_6ryxx")
+
+[node name="YahieTripleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("40_eouy1")
+
+[node name="YahieTripleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("41_gsrqv")
+
+[node name="DunkelDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_ei17m")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="DunkelDialogue"]
+
+[node name="Short" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelSingleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("42_kaopu")
+
+[node name="DunkelSingleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("43_uwpui")
+
+[node name="DunkelSingleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("44_1353q")
+
+[node name="DunkelSingleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("45_i7duc")
+
+[node name="DunkelSingleE" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("46_dqfg4")
+
+[node name="DunkelSingleF" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("47_hmjvm")
+
+[node name="DunkelSingleG" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("48_b0sbh")
+
+[node name="DunkelSingleH" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("49_yqt7e")
+
+[node name="DunkelSingleI" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("50_xa2a4")
+
+[node name="DunkelSingleJ" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("51_sj566")
+
+[node name="Med" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelDoubleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("52_lh8s1")
+
+[node name="DunkelDoubleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("53_m17r8")
+
+[node name="DunkelDoubleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("54_1kl8s")
+
+[node name="DunkelDoubleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("55_6ytif")
+
+[node name="DunkelDoubleE" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("56_or3nd")
+
+[node name="DunkelDoubleF" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("57_54erv")
+
+[node name="DunkelDoubleG" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("58_rjc85")
+
+[node name="DunkelDoubleH" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("59_533y0")
+
+[node name="Long" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelTripleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("60_cmmdo")
+
+[node name="DunkelTripleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("61_x0lis")
+
+[node name="DunkelTripleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("62_67mlk")
+
+[node name="DunkelTripleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("63_s0ix6")
+
+[node name="Fast" type="Node" parent="DunkelDialogue"]
+
+[node name="Short" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelSingleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("64_nyewt")
+
+[node name="DunkelSingleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("65_84tad")
+
+[node name="DunkelSingleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("66_purgx")
+
+[node name="DunkelSingleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("67_2qqn6")
+
+[node name="DunkelSingleE" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("68_jg40o")
+
+[node name="DunkelSingleF" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("69_emewb")
+
+[node name="DunkelSingleG" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("70_3p511")
+
+[node name="DunkelSingleH" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("71_jsax3")
+
+[node name="DunkelSingleI" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("72_54ln8")
+
+[node name="DunkelSingleJ" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("73_tfub3")
+
+[node name="Med" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelDoubleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("74_2t2y2")
+
+[node name="DunkelDoubleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("75_b54rj")
+
+[node name="DunkelDoubleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("76_v6307")
+
+[node name="DunkelDoubleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("77_2wm5m")
+
+[node name="DunkelDoubleE" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("78_kdkwm")
+
+[node name="DunkelDoubleF" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("79_ed6uc")
+
+[node name="DunkelDoubleG" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("80_qjcef")
+
+[node name="DunkelDoubleH" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("81_r47u1")
+
+[node name="Long" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelTripleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("82_nu4gy")
+
+[node name="DunkelTripleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("83_4gwjr")
+
+[node name="DunkelTripleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("84_vextc")
+
+[node name="DunkelTripleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("85_t2di7")

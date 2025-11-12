@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://chpova54ruaiy"
+path="res://.godot/imported/Slam Womp.wav-996d7d3ca97ddfa21d8b84f6ebe13dbd.sample"
+
+[deps]
+
+source_file="res://Sounds/Slam Womp.wav"
+dest_files=["res://.godot/imported/Slam Womp.wav-996d7d3ca97ddfa21d8b84f6ebe13dbd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d15hsvypatqp2"
-path="res://.godot/imported/NonsenseMap.glb-6395156e6850650b0cfc3250676f9e0f.scn"
+uid="uid://dt4xl64xf3x04"
+path="res://.godot/imported/Witch_Hat.glb-0be0ca3bd8ec51d0e460f4b358215f82.scn"
 
 [deps]
 
-source_file="res://Sounds/Voices/Green1/Fast/NonsenseMap.glb"
-dest_files=["res://.godot/imported/NonsenseMap.glb-6395156e6850650b0cfc3250676f9e0f.scn"]
+source_file="res://Models/Witch_Hat.glb"
+dest_files=["res://.godot/imported/Witch_Hat.glb-0be0ca3bd8ec51d0e460f4b358215f82.scn"]
 
 [params]
 

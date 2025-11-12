@@ -16,12 +16,25 @@ class_name PauseMenu
 @export var _label: Label
 
 var _dialogueStrings: Dictionary[GlobalEnums.Dialogue, String] = {
-	GlobalEnums.Dialogue.GREEN1:"I want to go out for halloween this year, but I would like to wear a pumpkin as a costume... could you get me one?"
+	GlobalEnums.Dialogue.BUNGOOWANT:"I want to go out for Halloween this year, but I would like to wear a pumpkin as a costume... could you get me one?",
+	GlobalEnums.Dialogue.BUNGOOTHANKS:"That looks perfect!!! Thank you for the costume, see you at the town square for the party!",
+	GlobalEnums.Dialogue.BUNGOOFESTIVAL:"This is so fun! My costume looks awesome and it's such a nice night. Thank you for inviting me!",
+	GlobalEnums.Dialogue.YAHIEWANT: "Halloween sounds fun, but you're not even wearing a costume! Why should I go out this year if you're not even wearing a costume?",
+	GlobalEnums.Dialogue.YAHIETHANKS: "Woah, that hat looks fantastic! Okay, maybe I'll go out this year. See you at the town square?",
+	GlobalEnums.Dialogue.YAHIEFESTIVAL: "Nice costume! This is a ton of fun!!!",
+	GlobalEnums.Dialogue.DUNKELWANT1: "I want to go out this year for Halloween, but I'm scared of the dark... maybe I'd go out if the lights in the square were on.",
+	GlobalEnums.Dialogue.DUNKELWANT2: "I heard there's an issue with the windmill causing the power issue. Maybe you can fix that and then I'll come out with you?",
+	GlobalEnums.Dialogue.DUNKELTHANKS: "Wow, the lights look so great! Okay, I'll come have some fun. See you at the town square!",
+	GlobalEnums.Dialogue.DUNKELFESTIVAL: "Thanks for turning on the lights for me, Halloween is so fun!",
+	GlobalEnums.Dialogue.WINDMILLSWITCH: "Looks like some halloween candy was stuck on the gear. Trick or treat!",
+	GlobalEnums.Dialogue.TOOPOOR: "This hat costs 3 coins! Better start saving up.",
+	GlobalEnums.Dialogue.HATACQUIRED: "Here's your hat. Enjoy your purchase!"
 }
 
-@export var _voices: Dictionary[GlobalEnums.Voices, DialogueReader] = {}
-@export var FUCK_SHIT_FUCK_YOU: DialogueReader
-var _curVoice: GlobalEnums.Voices = GlobalEnums.Voices.GREEN
+var _curVoice: GlobalEnums.Voices = GlobalEnums.Voices.BUNGOO
+@export var _BungooVoice: DialogueReader
+@export var _DunkelVoice: DialogueReader
+@export var _YahieVoice: DialogueReader
 
 var _dialogueQueue: Array[GlobalEnums.Dialogue]
 var _readingDialogue: bool = false
@@ -73,9 +86,19 @@ func _process(delta: float) -> void:
 						if c.is_valid_ascii_identifier():
 							aword += c
 					if Input.is_action_pressed("advance_dialogue"):
-						FUCK_SHIT_FUCK_YOU.Speak(aword.length(), true)
+						if _curVoice == GlobalEnums.Voices.BUNGOO:
+							_BungooVoice.Speak(aword.length(), true)
+						elif _curVoice == GlobalEnums.Voices.YAHIE:
+							_YahieVoice.Speak(aword.length(), true)
+						elif _curVoice == GlobalEnums.Voices.DUNKEL:
+							_DunkelVoice.Speak(aword.length(), true)
 					else:
-						FUCK_SHIT_FUCK_YOU.Speak(aword.length())
+						if _curVoice == GlobalEnums.Voices.BUNGOO:
+							_BungooVoice.Speak(aword.length())
+						elif _curVoice == GlobalEnums.Voices.YAHIE:
+							_YahieVoice.Speak(aword.length())
+						elif _curVoice == GlobalEnums.Voices.DUNKEL:
+							_DunkelVoice.Speak(aword.length())
 					
 				_label.text += _curDialogue.left(1)
 				_curDialogue = _curDialogue.substr(1)
@@ -98,7 +121,7 @@ func _process(delta: float) -> void:
 		else:
 			if Input.is_action_just_pressed("advance_dialogue"):
 				if _dialogueQueue.size() > 0:
-					_curDialogue = _dialogueQueue.pop_front()
+					_curDialogue = _dialogueStrings[_dialogueQueue.pop_front()]
 					_label.text = ""
 				else:
 					_readingDialogue = false
@@ -118,4 +141,7 @@ func display_text():
 	
 func queue_dialogue(d: GlobalEnums.Dialogue):
 	_dialogueQueue.push_back(d)
+	
+func set_voice(v: GlobalEnums.Voices):
+	_curVoice = v
 	
