@@ -1618,6 +1618,7 @@ _FTalkZone = NodePath("../MainIsland/PartyPlatform/YahieDance/TalkZone/Collision
 _FCollider = NodePath("../MainIsland/PartyPlatform/YahieDance/StaticBody3D/CollisionShape3D")
 _player = NodePath("../Player")
 _pauseMenu = NodePath("../PauseMenu")
+_dialogQueueing = null
 
 [node name="Shop" parent="." node_paths=PackedStringArray("_yahie", "_player", "_pauseMenu") instance=ExtResource("13_b640e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.962629, 4.448613, 22.589973)

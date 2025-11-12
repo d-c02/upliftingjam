@@ -38,3 +38,6 @@ func getBackwardVector():
 	else:
 		#this is a bad place to be
 		return Vector3.BACK
+		
+func getProgressRatio():
+	return _path.progress_ratio

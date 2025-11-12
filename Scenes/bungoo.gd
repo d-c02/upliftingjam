@@ -1,15 +1,15 @@
 extends TalkZone
 
-class_name Yahie
+class_name Bungoo
 
 var _requestFulfilled: bool = false
 var _transitioning: bool = false
 var _finished: bool = false
 var _curTransitionTime: float = 0
 var _maxTransitionTime: float = 1.0
-var _pleaseDialogue: Array[GlobalEnums.Dialogue] = [GlobalEnums.Dialogue.YAHIEWANT]
-var _thanksDialogue: Array[GlobalEnums.Dialogue] = [GlobalEnums.Dialogue.YAHIETHANKS]
-@export var _FestivalDunkel: Node3D
+var _pleaseDialogue: Array[GlobalEnums.Dialogue] = [GlobalEnums.Dialogue.BUNGOOWANT]
+var _thanksDialogue: Array[GlobalEnums.Dialogue] = [GlobalEnums.Dialogue.BUNGOOTHANKS]
+@export var _FestivalBungoo: Node3D
 @export var _seeya: CPUParticles3D
 @export var _Model: Node3D
 @export var _FTalkZone: CollisionShape3D
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 			_InteractIcon.visible = false
 			_active = false
 			_Model.visible = false
-			_FestivalDunkel.visible = true
+			_FestivalBungoo.visible = true
 			_seeya.emitting = true
 			_TPSFX.play()
 			_Collider.set_deferred("disabled", true)
@@ -48,17 +48,18 @@ func _physics_process(delta: float) -> void:
 		
 	if (Input.is_action_just_pressed("speak")):
 		if (_active):
-			if !_requestFulfilled:
+			if !_player._holding:
 				for d in _pleaseDialogue:
 					_pauseMenu.queue_dialogue(d)
-				_pauseMenu.set_voice(GlobalEnums.Voices.YAHIE)
+				_pauseMenu.set_voice(GlobalEnums.Voices.BUNGOO)
 				_pauseMenu.display_text()
 				_active = false
 			else:
 				for d in _thanksDialogue:
 					_pauseMenu.queue_dialogue(d)
-				_pauseMenu.set_voice(GlobalEnums.Voices.YAHIE)
+				_pauseMenu.set_voice(GlobalEnums.Voices.BUNGOO)
 				_pauseMenu.display_text()
 				_active = false
 				_transitioning = true
+				_player.eradicate_pumpkin()
 			_InteractIcon.visible = false

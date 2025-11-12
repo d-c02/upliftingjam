@@ -6,6 +6,7 @@ enum States {GROUNDED, IN_AIR, GRINDING, GLIDING, DROWNING, ROLLING}
 
 var _state: States = States.GROUNDED
 var _coins: int = 0
+var _inZone: bool = false
 
 @export var _camera: Camera3D
 @export var _meshPivot: Node3D
@@ -75,7 +76,8 @@ func state_grounded(delta: float) -> void:
 	
 	if (Input.is_action_just_pressed("pick_up")):
 		if _holding:
-			drop_item()
+			if !_inZone:
+				drop_item()
 	
 	if (Input.is_action_just_pressed("jump")):
 		_targetVelocity.y = _jumpSpeed;
@@ -351,10 +353,18 @@ func rail_entered(body: Object, gr: GrindRail):
 		(_AnimationTree.tree_root as AnimationNodeBlendTree).get_node("HoldingAnim").animation = "Grinding"
 		_state = States.GRINDING
 		_rail = gr
-		if _rail.getBackwardVector().dot(velocity.normalized()) > 0:
-			_grindDirection = -1
+		var v: Vector3 = Vector3(velocity.x, 0, velocity.z)
+		var input = velocity
+		if v != Vector3.ZERO:
+			if _rail.getBackwardVector().dot(velocity.normalized()) > 0:
+				_grindDirection = -1
+			else:
+				_grindDirection = 1
 		else:
-			_grindDirection = 1
+			if (gr.getProgressRatio() < 0.5):
+				_grindDirection = 1
+			else:
+				_grindDirection = -1
 			
 func drown(body: Object):
 	velocity = Vector3.ZERO
@@ -376,6 +386,12 @@ func drop_item():
 	_pumpkin.visible = false
 	_holding = false
 	_pumpkinInteractable.drop()
+	_AnimationTree.set("parameters/IsHolding/blend_amount", 0.0)
+
+func eradicate_pumpkin():
+	_pumpkinInteractable.queue_free()
+	_holding = false
+	_pumpkin.visible = false
 	_AnimationTree.set("parameters/IsHolding/blend_amount", 0.0)
 
 @export_group("SFX")

@@ -23,10 +23,12 @@ func player_entered(_obj: Object):
 	if (!_transitioning and !_finished):
 		_InteractIcon.visible = true
 		_active = true
+		_player._inZone = true
 	
 func player_exited(_obj: Object):
 	_InteractIcon.visible = false
 	_active = false
+	_player._inZone = false
 
 func _physics_process(delta: float) -> void:
 	if (_transitioning):
