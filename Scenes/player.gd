@@ -41,8 +41,8 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 #func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("pause"):
-		#get_tree().quit()
+#	if Input.is_action_just_pressed("recapture_mouse"):
+		
 
 func _physics_process(delta: float) -> void:
 	_stateDict[_state].call(delta)
@@ -343,6 +343,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		# Prevent the camera from rotating too far up or down.
 		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -tilt_limit, tilt_limit / 2)
 		_camera_pivot.rotation.y += -event.relative.x * mouse_sensitivity
+	if event is InputEventMouseButton:
+		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func rail_entered(body: Object, gr: GrindRail):
 	#global_position = gr.to_global(gr.curve.get_closest_point(global_position))
