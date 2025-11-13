@@ -27,8 +27,9 @@ var _dialogueStrings: Dictionary[GlobalEnums.Dialogue, String] = {
 	GlobalEnums.Dialogue.DUNKELTHANKS: "Wow, the lights look so great! Okay, I'll come have some fun. See you at the town square!",
 	GlobalEnums.Dialogue.DUNKELFESTIVAL: "Thanks for turning on the lights for me, Halloween is so fun!",
 	GlobalEnums.Dialogue.WINDMILLSWITCH: "Looks like some halloween candy was stuck on the gear. Trick or treat!",
-	GlobalEnums.Dialogue.TOOPOOR: "This hat costs 3 coins! Better start saving up.",
-	GlobalEnums.Dialogue.HATACQUIRED: "Here's your hat. Enjoy your purchase!"
+	GlobalEnums.Dialogue.TOOPOOR: "This hat costs 5 coins! Better start saving up.",
+	GlobalEnums.Dialogue.HATACQUIRED: "Here's your hat. Enjoy your purchase!",
+	GlobalEnums.Dialogue.TUTORIAL: "Press space to jump, press and hold space in the air to glide. Press f to dash. If you jump during a dash, you'll go higher and further. Hold space after jumping to fall slower."
 }
 
 var _curVoice: GlobalEnums.Voices = GlobalEnums.Voices.BUNGOO

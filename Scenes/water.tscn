@@ -15,9 +15,9 @@ shader_parameter/wave_speed = 2.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bjixy"]
 material = SubResource("ShaderMaterial_qq3op")
-size = Vector2(1280, 1280)
-subdivide_width = 32
-subdivide_depth = 32
+size = Vector2(2560, 2560)
+subdivide_width = 64
+subdivide_depth = 64
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_gf5bf"]
 

@@ -2,6 +2,7 @@ extends TalkZone
 
 @export var _lights: Array[Node3D]
 @export var _dunkel: Dunkel
+@export var _windmillAnim: AnimationPlayer
 func _physics_process(delta: float) -> void:
 	if (Input.is_action_just_pressed("speak")):
 		if (_active):
@@ -19,4 +20,5 @@ func _physics_process(delta: float) -> void:
 				light.visible = true
 			_dunkel._requestFulfilled = true
 			_dunkel.playsound()
+			_windmillAnim.current_animation = "Working"
 			queue_free()

@@ -1,7 +1,7 @@
 extends TalkZone
 
 class_name Shop
-var _cost: int = 3
+var _cost: int = 5
 #@export var _cShape: CollisionShape3D
 @export var _yahie: Yahie
 func _physics_process(delta: float) -> void:

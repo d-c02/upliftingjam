@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://dvjpp1mp3aclq" path="res://Scenes/talk_zone.gd" id="1_fn6lg"]
 [ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="2_qcrvj"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
-radius = 5.0
+[sub_resource type="SphereShape3D" id="SphereShape3D_asfaq"]
+radius = 2.342528
 
 [node name="TalkZone" type="Area3D" node_paths=PackedStringArray("_InteractIcon")]
 collision_layer = 8
@@ -13,7 +13,7 @@ script = ExtResource("1_fn6lg")
 _InteractIcon = NodePath("InteractIcon")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_v4tln")
+shape = SubResource("SphereShape3D_asfaq")
 
 [node name="InteractIcon" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7076283, 0)
