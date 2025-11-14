@@ -43,6 +43,7 @@ func _ready() -> void:
 
 var _initialPos: Vector3
 func resetPos():
+	drop_item()
 	global_position = _initialPos
 	_state = States.GROUNDED
 	
@@ -388,7 +389,7 @@ func drown(body: Object):
 @export_group("Holding")
 @export var _pumpkin: Node3D
 var _holding = false
-var _pumpkinInteractable: Pumpkin
+@export var _pumpkinInteractable: Pumpkin
 func hold_item(pumpkin: Pumpkin):
 	_pumpkin.visible = true
 	_holding = true
@@ -402,9 +403,9 @@ func drop_item():
 	_AnimationTree.set("parameters/IsHolding/blend_amount", 0.0)
 
 func eradicate_pumpkin():
-	_pumpkinInteractable.queue_free()
-	_holding = false
+	_pumpkinInteractable.eradicate()
 	_pumpkin.visible = false
+	_holding = false
 	_AnimationTree.set("parameters/IsHolding/blend_amount", 0.0)
 
 @export_group("SFX")

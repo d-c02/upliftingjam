@@ -12,6 +12,6 @@ var _target: int = 3
 var _count: int = 0
 func increment():
 	_count += 1
-	if (_count > _target):
-		_cShape.disabled = false
+	if (_count >= _target):
+		_cShape.set_deferred("disabled", false)
 		visible = true

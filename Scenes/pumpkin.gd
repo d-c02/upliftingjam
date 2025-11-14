@@ -19,7 +19,12 @@ func _physics_process(delta: float) -> void:
 			visible = false
 			_cShape.set_deferred("disabled", true)
 			_active = false
-			
+
+func eradicate():
+	visible = false
+	_cShape.set_deferred("disabled", true)
+	_active = false
+		
 func drop():
 	visible = true
 	_cShape.set_deferred("disabled", false)

@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://cx8hgfrc5kr8v" path="res://Models/Materials/glowy.tres" id="3_ftwrb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
-radius = 5.0
+radius = 3.0262215
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_83ns7"]
 material = ExtResource("3_ftwrb")

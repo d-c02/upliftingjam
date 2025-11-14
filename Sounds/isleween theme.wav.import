@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxksm202er0ag"
+path="res://.godot/imported/isleween theme.wav-c6f399720f2010a8ade4d93e9ff6a99d.sample"
+
+[deps]
+
+source_file="res://Sounds/isleween theme.wav"
+dest_files=["res://.godot/imported/isleween theme.wav-c6f399720f2010a8ade4d93e9ff6a99d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

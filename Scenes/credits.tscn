@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=3 uid="uid://byapxlotxkqsh"]
+[gd_scene load_steps=169 format=3 uid="uid://d3bqof7o25v1l"]
 
 [ext_resource type="Texture2D" uid="uid://d0djsi1kujkda" path="res://Textures/thanks.png" id="1_r18jl"]
 [ext_resource type="Script" uid="uid://de4xnag45pylp" path="res://Scenes/pause_menu.gd" id="1_yryy5"]
@@ -161,7 +161,7 @@
 [ext_resource type="AudioStream" uid="uid://bmaycx4u3t32w" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_c.wav" id="158_jqpcn"]
 [ext_resource type="AudioStream" uid="uid://b407ip1trmenu" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_d.wav" id="159_0exjv"]
 [ext_resource type="Texture2D" uid="uid://b02u1thej0qro" path="res://Textures/replay.png" id="161_5pdbf"]
-[ext_resource type="Script" uid="uid://11plxoclmkcm" path="res://Scenes/replaybutton.gd" id="162_jke5m"]
+[ext_resource type="Script" path="res://Scenes/replaybutton.gd" id="162_jke5m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kryiu"]
 atlas = ExtResource("5_lcxwa")
@@ -208,7 +208,7 @@ animations = [{
 }]
 
 [node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipeOut", "_transitionWipeIn", "_textBox", "_label", "_BungooVoice", "_DunkelVoice", "_YahieVoice", "_MeowgieVoice", "_GroegiVoice")]
-process_mode = 2
+process_mode = 3
 layer = -1
 script = ExtResource("1_yryy5")
 _transitionWipeOut = NodePath("CircleTransition")
@@ -832,10 +832,12 @@ stream = ExtResource("158_jqpcn")
 stream = ExtResource("159_0exjv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
 position = Vector2(576, 324)
 sprite_frames = SubResource("SpriteFrames_1bamb")
 animation = &"Dance"
 autoplay = "Dance"
+frame_progress = 0.13604878
 speed_scale = 0.35
 
 [node name="TextureButton" type="TextureButton" parent="."]

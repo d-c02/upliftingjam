@@ -88,8 +88,8 @@ func _process(delta: float) -> void:
 			_transitioningOut = false
 			process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 			if !_loadCredits:
-				_pumpker.resetPos()
 				_player.resetPos()
+				_pumpker.resetPos()
 				process_mode = Node.PROCESS_MODE_ALWAYS
 				_transitioningIn = true
 				_transitionWipeIn.visible = true
