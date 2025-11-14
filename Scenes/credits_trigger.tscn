@@ -1,22 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7eatkb75epv2"]
+[gd_scene load_steps=7 format=3 uid="uid://b7eatkb75epv2"]
 
-[ext_resource type="Script" uid="uid://dvjpp1mp3aclq" path="res://Scenes/talk_zone.gd" id="1_0pcu8"]
-[ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="2_rrvf2"]
+[ext_resource type="Script" uid="uid://fum8yl7itp23" path="res://credits_trigger.gd" id="1_rrvf2"]
+[ext_resource type="Texture2D" uid="uid://crj7qu57gxnvc" path="res://Textures/e.png" id="2_8w6lw"]
+[ext_resource type="Material" uid="uid://cx8hgfrc5kr8v" path="res://Models/Materials/glowy.tres" id="3_ftwrb"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_v4tln"]
 radius = 5.0
 
-[node name="CreditsTrigger" type="Area3D" node_paths=PackedStringArray("_InteractIcon")]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_83ns7"]
+material = ExtResource("3_ftwrb")
+height = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_k6yux"]
+material = ExtResource("3_ftwrb")
+
+[node name="CreditsTrigger" type="Area3D" node_paths=PackedStringArray("_cShape", "_InteractIcon")]
+visible = false
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_0pcu8")
+script = ExtResource("1_rrvf2")
+_cShape = NodePath("CollisionShape3D")
 _InteractIcon = NodePath("InteractIcon")
+_voice = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_v4tln")
+disabled = true
 
 [node name="InteractIcon" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7076283, 0)
 visible = false
 billboard = 1
-texture = ExtResource("2_rrvf2")
+texture = ExtResource("2_8w6lw")
+
+[node name="Cone" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4291258, 0)
+mesh = SubResource("CapsuleMesh_83ns7")
+
+[node name="Point" type="MeshInstance3D" parent="Cone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3434634, 0)
+mesh = SubResource("SphereMesh_k6yux")
+skeleton = NodePath("../..")

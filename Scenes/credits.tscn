@@ -1,0 +1,852 @@
+[gd_scene load_steps=169 format=3 uid="uid://byapxlotxkqsh"]
+
+[ext_resource type="Texture2D" uid="uid://d0djsi1kujkda" path="res://Textures/thanks.png" id="1_r18jl"]
+[ext_resource type="Script" uid="uid://de4xnag45pylp" path="res://Scenes/pause_menu.gd" id="1_yryy5"]
+[ext_resource type="Material" uid="uid://bwsea65e7nfvl" path="res://Models/Materials/wipein.tres" id="2_5pdbf"]
+[ext_resource type="Texture2D" uid="uid://22pmmw8e4iyd" path="res://Textures/dialoguebox.png" id="3_jke5m"]
+[ext_resource type="FontFile" uid="uid://decl1q1lmwnju" path="res://Fonts/Cute Dino.ttf" id="4_l6b4l"]
+[ext_resource type="Texture2D" uid="uid://csauias7sx6kw" path="res://Textures/jackinglantern.png" id="5_lcxwa"]
+[ext_resource type="PackedScene" uid="uid://dlonflhkwxg8w" path="res://Scenes/dialogue_reader.tscn" id="6_0ujyg"]
+[ext_resource type="Script" uid="uid://vlkwpq4uttq3" path="res://Scenes/voice.gd" id="7_t56ee"]
+[ext_resource type="AudioStream" uid="uid://d0hlxt1s2gu8w" path="res://Sounds/Voices/Yahie/Slow/yahie_single_a.wav" id="8_p5hvl"]
+[ext_resource type="AudioStream" uid="uid://cgkb1g4glao63" path="res://Sounds/Voices/Yahie/Slow/yahie_single_b.wav" id="9_67vnp"]
+[ext_resource type="AudioStream" uid="uid://bym45pmmlfqaj" path="res://Sounds/Voices/Yahie/Slow/yahie_single_c.wav" id="10_lbjms"]
+[ext_resource type="AudioStream" uid="uid://0gnawd1qwcnt" path="res://Sounds/Voices/Yahie/Slow/yahie_single_d.wav" id="11_khomx"]
+[ext_resource type="AudioStream" uid="uid://fmonm7a8qkwc" path="res://Sounds/Voices/Yahie/Slow/yahie_single_e.wav" id="12_vkah4"]
+[ext_resource type="AudioStream" uid="uid://d1bcs7a14rkj2" path="res://Sounds/Voices/Yahie/Slow/yahie_double_a.wav" id="13_j8smr"]
+[ext_resource type="AudioStream" uid="uid://ds7g7qlot62x3" path="res://Sounds/Voices/Yahie/Slow/yahie_double_b.wav" id="14_5tf16"]
+[ext_resource type="AudioStream" uid="uid://xyjv5ac5cetw" path="res://Sounds/Voices/Yahie/Slow/yahie_double_c.wav" id="15_h3f3d"]
+[ext_resource type="AudioStream" uid="uid://crropet8cd8ho" path="res://Sounds/Voices/Yahie/Slow/yahie_double_d.wav" id="16_stobb"]
+[ext_resource type="AudioStream" uid="uid://b5mtyph2xd3xq" path="res://Sounds/Voices/Yahie/Slow/yahie_double_e.wav" id="17_f2j87"]
+[ext_resource type="AudioStream" uid="uid://bmu818a0os80s" path="res://Sounds/Voices/Yahie/Slow/yahie_double_f.wav" id="18_f3bjh"]
+[ext_resource type="AudioStream" uid="uid://dqpbgsrcgbhpc" path="res://Sounds/Voices/Yahie/Slow/yahie_double_g.wav" id="19_vncr4"]
+[ext_resource type="AudioStream" uid="uid://bnmm1w55tvhb" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_a.wav" id="20_aak0c"]
+[ext_resource type="AudioStream" uid="uid://efr6papbfw1j" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_b.wav" id="21_aoigm"]
+[ext_resource type="AudioStream" uid="uid://ddi1deft3lej3" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_c.wav" id="22_yn3kd"]
+[ext_resource type="AudioStream" uid="uid://jr1lptucn3mm" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_d.wav" id="23_ihq2o"]
+[ext_resource type="AudioStream" uid="uid://bej4e0ecx3nn4" path="res://Sounds/Voices/Yahie/Slow/yahie_triple_e.wav" id="24_2faee"]
+[ext_resource type="AudioStream" uid="uid://dptovf2s3533x" path="res://Sounds/Voices/Yahie/Fast/yahie_single_a.wav" id="25_ykl1y"]
+[ext_resource type="AudioStream" uid="uid://cphajta8vjav" path="res://Sounds/Voices/Yahie/Fast/yahie_single_b.wav" id="26_1rh5g"]
+[ext_resource type="AudioStream" uid="uid://dihty248b557e" path="res://Sounds/Voices/Yahie/Fast/yahie_single_c.wav" id="27_36uew"]
+[ext_resource type="AudioStream" uid="uid://beo6ps267kc00" path="res://Sounds/Voices/Yahie/Fast/yahie_single_d.wav" id="28_fdcsh"]
+[ext_resource type="AudioStream" uid="uid://c7nudyelyrvsa" path="res://Sounds/Voices/Yahie/Fast/yahie_single_e.wav" id="29_827si"]
+[ext_resource type="AudioStream" uid="uid://bxji4r6npanpw" path="res://Sounds/Voices/Yahie/Fast/yahie_double_a.wav" id="30_x7rel"]
+[ext_resource type="AudioStream" uid="uid://frp7j3xtx4me" path="res://Sounds/Voices/Yahie/Fast/yahie_double_b.wav" id="31_g46eq"]
+[ext_resource type="AudioStream" uid="uid://11leulcdest" path="res://Sounds/Voices/Yahie/Fast/yahie_double_c.wav" id="32_tyaoc"]
+[ext_resource type="AudioStream" uid="uid://ctsurgdpancao" path="res://Sounds/Voices/Yahie/Fast/yahie_double_d.wav" id="33_cri87"]
+[ext_resource type="AudioStream" uid="uid://rubvwddpfy7d" path="res://Sounds/Voices/Yahie/Fast/yahie_double_e.wav" id="34_23bx4"]
+[ext_resource type="AudioStream" uid="uid://2somjyu118sh" path="res://Sounds/Voices/Yahie/Fast/yahie_double_f.wav" id="35_73gc5"]
+[ext_resource type="AudioStream" uid="uid://x5kem2she3m4" path="res://Sounds/Voices/Yahie/Fast/yahie_double_g.wav" id="36_h2pa3"]
+[ext_resource type="AudioStream" uid="uid://cojt08qg6xn0o" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_a.wav" id="37_kjyof"]
+[ext_resource type="AudioStream" uid="uid://dlabincekgfme" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_b.wav" id="38_f20px"]
+[ext_resource type="AudioStream" uid="uid://cq0234x07r8l2" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_c.wav" id="39_pibem"]
+[ext_resource type="AudioStream" uid="uid://ljch0wuvktkg" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_d.wav" id="40_i5kko"]
+[ext_resource type="AudioStream" uid="uid://bujphs3gqx1gi" path="res://Sounds/Voices/Yahie/Fast/yahie_triple_e.wav" id="41_8em0t"]
+[ext_resource type="AudioStream" uid="uid://cmxa7jf0r4xi7" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_a.wav" id="42_s0e1f"]
+[ext_resource type="AudioStream" uid="uid://bi3xrbdea1jyt" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_b.wav" id="43_feaqc"]
+[ext_resource type="AudioStream" uid="uid://b5x20jauc82sf" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_c.wav" id="44_4thyq"]
+[ext_resource type="AudioStream" uid="uid://dujepuiak0ds7" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_d.wav" id="45_u3jrk"]
+[ext_resource type="AudioStream" uid="uid://c3lfwd4hcqvag" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_e.wav" id="46_hm1yj"]
+[ext_resource type="AudioStream" uid="uid://e6r2qseywmia" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_f.wav" id="47_vbuy8"]
+[ext_resource type="AudioStream" uid="uid://bkr1gpm3r4117" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_g.wav" id="48_5q0oe"]
+[ext_resource type="AudioStream" uid="uid://draeiww2udcsg" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_h.wav" id="49_d1j74"]
+[ext_resource type="AudioStream" uid="uid://bycsf72t85c3a" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_i.wav" id="50_yr55o"]
+[ext_resource type="AudioStream" uid="uid://dvmqu4m1yw1pf" path="res://Sounds/Voices/Dunkel/Slow/dunkel_single_j.wav" id="51_o844y"]
+[ext_resource type="AudioStream" uid="uid://bepsajvxf85t2" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_a.wav" id="52_2sa4b"]
+[ext_resource type="AudioStream" uid="uid://d3pkhgo3nc6ju" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_b.wav" id="53_y468r"]
+[ext_resource type="AudioStream" uid="uid://0jaek7cbddtw" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_c.wav" id="54_wpa0o"]
+[ext_resource type="AudioStream" uid="uid://dnv0tnpiscaae" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_d.wav" id="55_rpag4"]
+[ext_resource type="AudioStream" uid="uid://eps6esrahq7h" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_e.wav" id="56_p0r0o"]
+[ext_resource type="AudioStream" uid="uid://nw5fahucwla0" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_f.wav" id="57_nacas"]
+[ext_resource type="AudioStream" uid="uid://rgdlhkwiqdum" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_g.wav" id="58_dsmv0"]
+[ext_resource type="AudioStream" uid="uid://b73hyk0jotb87" path="res://Sounds/Voices/Dunkel/Slow/dunkel_double_h.wav" id="59_ob2rc"]
+[ext_resource type="AudioStream" uid="uid://l0xj6ainfi0o" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_a.wav" id="60_3w4ed"]
+[ext_resource type="AudioStream" uid="uid://cqfox1eiy1mig" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_b.wav" id="61_h4xtr"]
+[ext_resource type="AudioStream" uid="uid://c4g81alpfwogt" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_c.wav" id="62_0n5ty"]
+[ext_resource type="AudioStream" uid="uid://c4r24r21qwcr5" path="res://Sounds/Voices/Dunkel/Slow/dunkel_triple_d.wav" id="63_2tawj"]
+[ext_resource type="AudioStream" uid="uid://bxwyq00f0jnbr" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_a.wav" id="64_1rj7g"]
+[ext_resource type="AudioStream" uid="uid://dooc2us2x2a2n" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_b.wav" id="65_xpbdc"]
+[ext_resource type="AudioStream" uid="uid://cvp50snoplk7s" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_c.wav" id="66_twtde"]
+[ext_resource type="AudioStream" uid="uid://b6vigjpx7gs2m" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_d.wav" id="67_i06e3"]
+[ext_resource type="AudioStream" uid="uid://ces3w7e0oak0k" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_e.wav" id="68_twv0d"]
+[ext_resource type="AudioStream" uid="uid://db0p4k44xlvtg" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_f.wav" id="69_skqyh"]
+[ext_resource type="AudioStream" uid="uid://c2fovva0gube" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_g.wav" id="70_ls84f"]
+[ext_resource type="AudioStream" uid="uid://o35068l1c8p0" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_h.wav" id="71_627k0"]
+[ext_resource type="AudioStream" uid="uid://c0mn8583uy2p2" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_i.wav" id="72_42mi7"]
+[ext_resource type="AudioStream" uid="uid://cpo15qypbll4o" path="res://Sounds/Voices/Dunkel/Fast/dunkel_single_j.wav" id="73_ydtkw"]
+[ext_resource type="AudioStream" uid="uid://bfd6t4n1xou7o" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_a.wav" id="74_val8p"]
+[ext_resource type="AudioStream" uid="uid://cj7q2jkfv5ek1" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_b.wav" id="75_5yokc"]
+[ext_resource type="AudioStream" uid="uid://tmjhlb75hyxf" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_c.wav" id="76_10m6q"]
+[ext_resource type="AudioStream" uid="uid://mxs17i6lc14c" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_d.wav" id="77_a605w"]
+[ext_resource type="AudioStream" uid="uid://dhf0ovqfadqvs" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_e.wav" id="78_ewv5u"]
+[ext_resource type="AudioStream" uid="uid://d275fy1jmk8ya" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_f.wav" id="79_ol0n5"]
+[ext_resource type="AudioStream" uid="uid://dstghhv0lf02j" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_g.wav" id="80_25dtl"]
+[ext_resource type="AudioStream" uid="uid://bfwr2xh2of63c" path="res://Sounds/Voices/Dunkel/Fast/dunkel_double_h.wav" id="81_4n1j5"]
+[ext_resource type="AudioStream" uid="uid://qxa1p2xelteh" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_a.wav" id="82_8gvi6"]
+[ext_resource type="AudioStream" uid="uid://bf58lpjg3grh1" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_b.wav" id="83_7us0l"]
+[ext_resource type="AudioStream" uid="uid://etx8p3hcj0dx" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_c.wav" id="84_fyh35"]
+[ext_resource type="AudioStream" uid="uid://cjol3ddu10tao" path="res://Sounds/Voices/Dunkel/Fast/dunkel_triple_d.wav" id="85_qk3e3"]
+[ext_resource type="AudioStream" uid="uid://c7ffacv3ihrsd" path="res://Sounds/Voices/Meowgi/Slow/meowgie_single_a.wav" id="86_u5xo8"]
+[ext_resource type="AudioStream" uid="uid://bdnmf57dmeqwu" path="res://Sounds/Voices/Meowgi/Slow/meowgie_single_b.wav" id="87_3oeq2"]
+[ext_resource type="AudioStream" uid="uid://t4fvwlkw0n10" path="res://Sounds/Voices/Meowgi/Slow/meowgie_single_c.wav" id="88_kxw0x"]
+[ext_resource type="AudioStream" uid="uid://bue0ncsdxpvdh" path="res://Sounds/Voices/Meowgi/Slow/meowgie_single_d.wav" id="89_ikteo"]
+[ext_resource type="AudioStream" uid="uid://12cg8cm3t8nx" path="res://Sounds/Voices/Meowgi/Slow/meowgie_single_e.wav" id="90_snk13"]
+[ext_resource type="AudioStream" uid="uid://cwajh7xdfk8qt" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_a.wav" id="91_l2mvy"]
+[ext_resource type="AudioStream" uid="uid://c4n4hj7dqcm11" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_b.wav" id="92_hg1bu"]
+[ext_resource type="AudioStream" uid="uid://pbded822jfgk" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_c.wav" id="93_elqwd"]
+[ext_resource type="AudioStream" uid="uid://d1v5ijejqh5dy" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_d.wav" id="94_j01w2"]
+[ext_resource type="AudioStream" uid="uid://cckaxtf433tin" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_e.wav" id="95_xevww"]
+[ext_resource type="AudioStream" uid="uid://df8dbhaqsfsod" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_f.wav" id="96_fejgb"]
+[ext_resource type="AudioStream" uid="uid://oxgue7l702db" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_g.wav" id="97_4ti3j"]
+[ext_resource type="AudioStream" uid="uid://dynvkk5gf0gb4" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_h.wav" id="98_m0ri0"]
+[ext_resource type="AudioStream" uid="uid://dhvi3s6dcx5a0" path="res://Sounds/Voices/Meowgi/Slow/meowgie_double_i.wav" id="99_a2txh"]
+[ext_resource type="AudioStream" uid="uid://c57ib0bunuthw" path="res://Sounds/Voices/Meowgi/Slow/meowgie_triple_a.wav" id="100_1ya26"]
+[ext_resource type="AudioStream" uid="uid://7jn6rf4w63il" path="res://Sounds/Voices/Meowgi/Slow/meowgie_triple_b.wav" id="101_45feq"]
+[ext_resource type="AudioStream" uid="uid://d1pxecrnhuwd5" path="res://Sounds/Voices/Meowgi/Slow/meowgie_triple_c.wav" id="102_ghv7j"]
+[ext_resource type="AudioStream" uid="uid://872trw5jrf14" path="res://Sounds/Voices/Meowgi/Slow/meowgie_triple_d.wav" id="103_s5l7d"]
+[ext_resource type="AudioStream" uid="uid://bc3yauyeqdi10" path="res://Sounds/Voices/Meowgi/Slow/meowgie_triple_e.wav" id="104_nr6dn"]
+[ext_resource type="AudioStream" uid="uid://b6eovfg8jhkef" path="res://Sounds/Voices/Meowgi/Fast/meowgie_single_a.wav" id="105_kryst"]
+[ext_resource type="AudioStream" uid="uid://dcd32qfbnsyg5" path="res://Sounds/Voices/Meowgi/Fast/meowgie_single_b.wav" id="106_vfnsu"]
+[ext_resource type="AudioStream" uid="uid://dg7rqaa0nqgwg" path="res://Sounds/Voices/Meowgi/Fast/meowgie_single_c.wav" id="107_fxjt6"]
+[ext_resource type="AudioStream" uid="uid://dbmwcothkvbgj" path="res://Sounds/Voices/Meowgi/Fast/meowgie_single_d.wav" id="108_pt5xc"]
+[ext_resource type="AudioStream" uid="uid://ctns6rrhn3ej2" path="res://Sounds/Voices/Meowgi/Fast/meowgie_single_e.wav" id="109_cmxxj"]
+[ext_resource type="AudioStream" uid="uid://b2e2bbexe5jlt" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_a.wav" id="110_jcer0"]
+[ext_resource type="AudioStream" uid="uid://cm63auhfby3t3" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_b.wav" id="111_txwej"]
+[ext_resource type="AudioStream" uid="uid://clv4on3tbfqma" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_c.wav" id="112_r06j2"]
+[ext_resource type="AudioStream" uid="uid://brcrlcbgn7gop" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_d.wav" id="113_v8fxg"]
+[ext_resource type="AudioStream" uid="uid://b62dcpswjfh4w" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_e.wav" id="114_51lwp"]
+[ext_resource type="AudioStream" uid="uid://c0q4c6rcdk1ds" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_f.wav" id="115_6nsc7"]
+[ext_resource type="AudioStream" uid="uid://b4trwqf1w7j6d" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_g.wav" id="116_kammi"]
+[ext_resource type="AudioStream" uid="uid://bivrupcxalo5l" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_h.wav" id="117_xl17m"]
+[ext_resource type="AudioStream" uid="uid://b2i2lje1aryrv" path="res://Sounds/Voices/Meowgi/Fast/meowgie_double_i.wav" id="118_5wuyl"]
+[ext_resource type="AudioStream" uid="uid://iiooto6t3bab" path="res://Sounds/Voices/Meowgi/Fast/meowgie_triple_a.wav" id="119_r3j4g"]
+[ext_resource type="AudioStream" uid="uid://pxh3ocaiay1k" path="res://Sounds/Voices/Meowgi/Fast/meowgie_triple_b.wav" id="120_qgfgt"]
+[ext_resource type="AudioStream" uid="uid://br8qt821g8apv" path="res://Sounds/Voices/Meowgi/Fast/meowgie_triple_c.wav" id="121_4575l"]
+[ext_resource type="AudioStream" uid="uid://beajccq78b2rf" path="res://Sounds/Voices/Meowgi/Fast/meowgie_triple_d.wav" id="122_hv3gn"]
+[ext_resource type="AudioStream" uid="uid://billjnech6m2s" path="res://Sounds/Voices/Meowgi/Fast/meowgie_triple_e.wav" id="123_h48yl"]
+[ext_resource type="AudioStream" uid="uid://ck3bdvwpdn5l5" path="res://Sounds/Voices/Groegi/Slow/groegi_single_a.wav" id="124_jbsoa"]
+[ext_resource type="AudioStream" uid="uid://ccl47f0etfbt0" path="res://Sounds/Voices/Groegi/Slow/groegi_single_b.wav" id="125_ignpr"]
+[ext_resource type="AudioStream" uid="uid://x8bbcb4siwlv" path="res://Sounds/Voices/Groegi/Slow/groegi_single_c.wav" id="126_k12v7"]
+[ext_resource type="AudioStream" uid="uid://cjggrqe4rstse" path="res://Sounds/Voices/Groegi/Slow/groegi_single_d.wav" id="127_ran43"]
+[ext_resource type="AudioStream" uid="uid://dpx7kykiwyhok" path="res://Sounds/Voices/Groegi/Slow/groegi_single_e.wav" id="128_n81vw"]
+[ext_resource type="AudioStream" uid="uid://ce8u87knalhgt" path="res://Sounds/Voices/Groegi/Slow/groegi_double_a.wav" id="129_b6tfu"]
+[ext_resource type="AudioStream" uid="uid://cvpnbi641c518" path="res://Sounds/Voices/Groegi/Slow/groegi_double_b.wav" id="130_66s7n"]
+[ext_resource type="AudioStream" uid="uid://x5hjxg7lqqgj" path="res://Sounds/Voices/Groegi/Slow/groegi_double_c.wav" id="131_caoby"]
+[ext_resource type="AudioStream" uid="uid://8oq28yux7p78" path="res://Sounds/Voices/Groegi/Slow/groegi_double_d.wav" id="132_qr5c0"]
+[ext_resource type="AudioStream" uid="uid://bsxup0xui15qk" path="res://Sounds/Voices/Groegi/Slow/groegi_double_e.wav" id="133_l3ukl"]
+[ext_resource type="AudioStream" uid="uid://b36cs42m6b5ut" path="res://Sounds/Voices/Groegi/Slow/groegi_double_f.wav" id="134_w3uj8"]
+[ext_resource type="AudioStream" uid="uid://cchusni3nbbxp" path="res://Sounds/Voices/Groegi/Slow/groegi_double_g.wav" id="135_n1c04"]
+[ext_resource type="AudioStream" uid="uid://0wqtsxmgjq1" path="res://Sounds/Voices/Groegi/Slow/groegi_double_h.wav" id="136_gbhi7"]
+[ext_resource type="AudioStream" uid="uid://b45t43lema6f6" path="res://Sounds/Voices/Groegi/Slow/groegi_double_i.wav" id="137_1tdbc"]
+[ext_resource type="AudioStream" uid="uid://yb5cnsv3kty7" path="res://Sounds/Voices/Groegi/Slow/groegi_triple_a.wav" id="138_lyedv"]
+[ext_resource type="AudioStream" uid="uid://dhy72i5uj4q8k" path="res://Sounds/Voices/Groegi/Slow/groegi_triple_b.wav" id="139_ugxm3"]
+[ext_resource type="AudioStream" uid="uid://bupghtg8snqs4" path="res://Sounds/Voices/Groegi/Slow/groegi_triple_c.wav" id="140_cifks"]
+[ext_resource type="AudioStream" uid="uid://di5deuy7wta1b" path="res://Sounds/Voices/Groegi/Slow/groegi_triple_d.wav" id="141_a14pa"]
+[ext_resource type="AudioStream" uid="uid://gjpx7aqllo64" path="res://Sounds/Voices/Groegi/Fast/groegi_single_a.wav" id="142_gh8ky"]
+[ext_resource type="AudioStream" uid="uid://jl2t5clclg7i" path="res://Sounds/Voices/Groegi/Fast/groegi_single_b.wav" id="143_f7qhe"]
+[ext_resource type="AudioStream" uid="uid://cn0xd26gnmjgv" path="res://Sounds/Voices/Groegi/Fast/groegi_single_c.wav" id="144_pu641"]
+[ext_resource type="AudioStream" uid="uid://b2vu07m0t62vv" path="res://Sounds/Voices/Groegi/Fast/groegi_single_d.wav" id="145_2v7df"]
+[ext_resource type="AudioStream" uid="uid://ctfgl1cn326j7" path="res://Sounds/Voices/Groegi/Fast/groegi_single_e.wav" id="146_gtfkq"]
+[ext_resource type="AudioStream" uid="uid://yysuaduwm5sl" path="res://Sounds/Voices/Groegi/Fast/groegi_double_a.wav" id="147_5qgb8"]
+[ext_resource type="AudioStream" uid="uid://d4fyvsb2b60cu" path="res://Sounds/Voices/Groegi/Fast/groegi_double_b.wav" id="148_o5wgm"]
+[ext_resource type="AudioStream" uid="uid://l4s3t4pj14m6" path="res://Sounds/Voices/Groegi/Fast/groegi_double_c.wav" id="149_8si82"]
+[ext_resource type="AudioStream" uid="uid://big8a3x506o3d" path="res://Sounds/Voices/Groegi/Fast/groegi_double_d.wav" id="150_3g0ll"]
+[ext_resource type="AudioStream" uid="uid://il107v0cbvtw" path="res://Sounds/Voices/Groegi/Fast/groegi_double_e.wav" id="151_qh02e"]
+[ext_resource type="AudioStream" uid="uid://bd5nvgxydn5lk" path="res://Sounds/Voices/Groegi/Fast/groegi_double_f.wav" id="152_6620a"]
+[ext_resource type="AudioStream" uid="uid://ceverr8ft42yo" path="res://Sounds/Voices/Groegi/Fast/groegi_double_g.wav" id="153_7p1t3"]
+[ext_resource type="AudioStream" uid="uid://g5dlo0kvn2un" path="res://Sounds/Voices/Groegi/Fast/groegi_double_h.wav" id="154_ncfhd"]
+[ext_resource type="AudioStream" uid="uid://nk71neabc670" path="res://Sounds/Voices/Groegi/Fast/groegi_double_i.wav" id="155_se46w"]
+[ext_resource type="AudioStream" uid="uid://drnh0fahxeqxp" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_a.wav" id="156_7ghfb"]
+[ext_resource type="AudioStream" uid="uid://b8uv7bk0ku324" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_b.wav" id="157_svc2n"]
+[ext_resource type="AudioStream" uid="uid://bmaycx4u3t32w" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_c.wav" id="158_jqpcn"]
+[ext_resource type="AudioStream" uid="uid://b407ip1trmenu" path="res://Sounds/Voices/Groegi/Fast/groegi_triple_d.wav" id="159_0exjv"]
+[ext_resource type="Texture2D" uid="uid://b02u1thej0qro" path="res://Textures/replay.png" id="161_5pdbf"]
+[ext_resource type="Script" uid="uid://11plxoclmkcm" path="res://Scenes/replaybutton.gd" id="162_jke5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kryiu"]
+atlas = ExtResource("5_lcxwa")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oppgv"]
+atlas = ExtResource("5_lcxwa")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqntx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kryiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oppgv")
+}],
+"loop": true,
+"name": &"Winking",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gryuy"]
+atlas = ExtResource("1_r18jl")
+region = Rect2(0, 0, 1152, 648)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ccovl"]
+atlas = ExtResource("1_r18jl")
+region = Rect2(1152, 0, 1152, 648)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1bamb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gryuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ccovl")
+}],
+"loop": true,
+"name": &"Dance",
+"speed": 5.0
+}]
+
+[node name="PauseMenu" type="CanvasLayer" node_paths=PackedStringArray("_transitionWipeOut", "_transitionWipeIn", "_textBox", "_label", "_BungooVoice", "_DunkelVoice", "_YahieVoice", "_MeowgieVoice", "_GroegiVoice")]
+process_mode = 2
+layer = -1
+script = ExtResource("1_yryy5")
+_transitionWipeOut = NodePath("CircleTransition")
+_transitionWipeIn = NodePath("CircleTransitionIn")
+_material = ExtResource("2_5pdbf")
+_materialIn = ExtResource("2_5pdbf")
+_textBox = NodePath("DialogueBox")
+_label = NodePath("DialogueBox/Label")
+_BungooVoice = NodePath("BungooDialogue")
+_DunkelVoice = NodePath("DunkelDialogue")
+_YahieVoice = NodePath("YahieDialogue")
+_MeowgieVoice = NodePath("MeowgiDialogue")
+_GroegiVoice = NodePath("GroegiDialogue")
+
+[node name="CircleTransition" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+material = ExtResource("2_5pdbf")
+offset_left = -4.0
+offset_top = -5.0
+offset_right = 1155.0
+offset_bottom = 651.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CircleTransitionIn" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+material = ExtResource("2_5pdbf")
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1159.0
+offset_bottom = 654.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="DialogueBox" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+offset_left = 88.0
+offset_top = 344.0
+offset_right = 1088.0
+offset_bottom = 644.0
+texture = ExtResource("3_jke5m")
+
+[node name="Label" type="Label" parent="DialogueBox"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 56.0
+offset_top = 58.0
+offset_right = 943.0
+offset_bottom = 265.0
+theme_override_colors/font_color = Color(0.2, 0.26666668, 0.33333334, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.26666668, 0.33333334, 1)
+theme_override_fonts/font = ExtResource("4_l6b4l")
+theme_override_font_sizes/font_size = 36
+autowrap_mode = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="DialogueBox"]
+position = Vector2(918, 229)
+sprite_frames = SubResource("SpriteFrames_mqntx")
+animation = &"Winking"
+autoplay = "Winking"
+
+[node name="BungooDialogue" parent="." instance=ExtResource("6_0ujyg")]
+
+[node name="YahieDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_t56ee")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="YahieDialogue"]
+
+[node name="Short" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieSingleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("8_p5hvl")
+
+[node name="YahieSingleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("9_67vnp")
+
+[node name="YahieSingleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("10_lbjms")
+
+[node name="YahieSingleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("11_khomx")
+
+[node name="YahieSingleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Short"]
+stream = ExtResource("12_vkah4")
+
+[node name="Med" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieDoubleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("13_j8smr")
+
+[node name="YahieDoubleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("14_5tf16")
+
+[node name="YahieDoubleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("15_h3f3d")
+
+[node name="YahieDoubleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("16_stobb")
+
+[node name="YahieDoubleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("17_f2j87")
+
+[node name="YahieDoubleF" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("18_f3bjh")
+
+[node name="YahieDoubleG" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Med"]
+stream = ExtResource("19_vncr4")
+
+[node name="Long" type="Node" parent="YahieDialogue/Slow"]
+
+[node name="YahieTripleA" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("20_aak0c")
+
+[node name="YahieTripleB" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("21_aoigm")
+
+[node name="YahieTripleC" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("22_yn3kd")
+
+[node name="YahieTripleD" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("23_ihq2o")
+
+[node name="YahieTripleE" type="AudioStreamPlayer" parent="YahieDialogue/Slow/Long"]
+stream = ExtResource("24_2faee")
+
+[node name="Fast" type="Node" parent="YahieDialogue"]
+
+[node name="Short" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieSingleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("25_ykl1y")
+
+[node name="YahieSingleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("26_1rh5g")
+
+[node name="YahieSingleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("27_36uew")
+
+[node name="YahieSingleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("28_fdcsh")
+
+[node name="YahieSingleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Short"]
+stream = ExtResource("29_827si")
+
+[node name="Med" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieDoubleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("30_x7rel")
+
+[node name="YahieDoubleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("31_g46eq")
+
+[node name="YahieDoubleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("32_tyaoc")
+
+[node name="YahieDoubleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("33_cri87")
+
+[node name="YahieDoubleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("34_23bx4")
+
+[node name="YahieDoubleF" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("35_73gc5")
+
+[node name="YahieDoubleG" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Med"]
+stream = ExtResource("36_h2pa3")
+
+[node name="Long" type="Node" parent="YahieDialogue/Fast"]
+
+[node name="YahieTripleA" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("37_kjyof")
+
+[node name="YahieTripleB" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("38_f20px")
+
+[node name="YahieTripleC" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("39_pibem")
+
+[node name="YahieTripleD" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("40_i5kko")
+
+[node name="YahieTripleE" type="AudioStreamPlayer" parent="YahieDialogue/Fast/Long"]
+stream = ExtResource("41_8em0t")
+
+[node name="DunkelDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_t56ee")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="DunkelDialogue"]
+
+[node name="Short" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelSingleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("42_s0e1f")
+
+[node name="DunkelSingleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("43_feaqc")
+
+[node name="DunkelSingleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("44_4thyq")
+
+[node name="DunkelSingleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("45_u3jrk")
+
+[node name="DunkelSingleE" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("46_hm1yj")
+
+[node name="DunkelSingleF" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("47_vbuy8")
+
+[node name="DunkelSingleG" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("48_5q0oe")
+
+[node name="DunkelSingleH" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("49_d1j74")
+
+[node name="DunkelSingleI" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("50_yr55o")
+
+[node name="DunkelSingleJ" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Short"]
+stream = ExtResource("51_o844y")
+
+[node name="Med" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelDoubleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("52_2sa4b")
+
+[node name="DunkelDoubleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("53_y468r")
+
+[node name="DunkelDoubleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("54_wpa0o")
+
+[node name="DunkelDoubleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("55_rpag4")
+
+[node name="DunkelDoubleE" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("56_p0r0o")
+
+[node name="DunkelDoubleF" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("57_nacas")
+
+[node name="DunkelDoubleG" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("58_dsmv0")
+
+[node name="DunkelDoubleH" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Med"]
+stream = ExtResource("59_ob2rc")
+
+[node name="Long" type="Node" parent="DunkelDialogue/Slow"]
+
+[node name="DunkelTripleA" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("60_3w4ed")
+
+[node name="DunkelTripleB" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("61_h4xtr")
+
+[node name="DunkelTripleC" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("62_0n5ty")
+
+[node name="DunkelTripleD" type="AudioStreamPlayer" parent="DunkelDialogue/Slow/Long"]
+stream = ExtResource("63_2tawj")
+
+[node name="Fast" type="Node" parent="DunkelDialogue"]
+
+[node name="Short" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelSingleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("64_1rj7g")
+
+[node name="DunkelSingleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("65_xpbdc")
+
+[node name="DunkelSingleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("66_twtde")
+
+[node name="DunkelSingleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("67_i06e3")
+
+[node name="DunkelSingleE" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("68_twv0d")
+
+[node name="DunkelSingleF" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("69_skqyh")
+
+[node name="DunkelSingleG" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("70_ls84f")
+
+[node name="DunkelSingleH" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("71_627k0")
+
+[node name="DunkelSingleI" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("72_42mi7")
+
+[node name="DunkelSingleJ" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Short"]
+stream = ExtResource("73_ydtkw")
+
+[node name="Med" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelDoubleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("74_val8p")
+
+[node name="DunkelDoubleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("75_5yokc")
+
+[node name="DunkelDoubleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("76_10m6q")
+
+[node name="DunkelDoubleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("77_a605w")
+
+[node name="DunkelDoubleE" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("78_ewv5u")
+
+[node name="DunkelDoubleF" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("79_ol0n5")
+
+[node name="DunkelDoubleG" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("80_25dtl")
+
+[node name="DunkelDoubleH" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Med"]
+stream = ExtResource("81_4n1j5")
+
+[node name="Long" type="Node" parent="DunkelDialogue/Fast"]
+
+[node name="DunkelTripleA" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("82_8gvi6")
+
+[node name="DunkelTripleB" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("83_7us0l")
+
+[node name="DunkelTripleC" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("84_fyh35")
+
+[node name="DunkelTripleD" type="AudioStreamPlayer" parent="DunkelDialogue/Fast/Long"]
+stream = ExtResource("85_qk3e3")
+
+[node name="MeowgiDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_t56ee")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="MeowgiDialogue"]
+
+[node name="Short" type="Node" parent="MeowgiDialogue/Slow"]
+
+[node name="MeowgieSingleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Short"]
+stream = ExtResource("86_u5xo8")
+
+[node name="MeowgieSingleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Short"]
+stream = ExtResource("87_3oeq2")
+
+[node name="MeowgieSingleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Short"]
+stream = ExtResource("88_kxw0x")
+
+[node name="MeowgieSingleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Short"]
+stream = ExtResource("89_ikteo")
+
+[node name="MeowgieSingleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Short"]
+stream = ExtResource("90_snk13")
+
+[node name="Med" type="Node" parent="MeowgiDialogue/Slow"]
+
+[node name="MeowgieDoubleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("91_l2mvy")
+
+[node name="MeowgieDoubleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("92_hg1bu")
+
+[node name="MeowgieDoubleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("93_elqwd")
+
+[node name="MeowgieDoubleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("94_j01w2")
+
+[node name="MeowgieDoubleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("95_xevww")
+
+[node name="MeowgieDoubleF" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("96_fejgb")
+
+[node name="MeowgieDoubleG" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("97_4ti3j")
+
+[node name="MeowgieDoubleH" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("98_m0ri0")
+
+[node name="MeowgieDoubleI" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Med"]
+stream = ExtResource("99_a2txh")
+
+[node name="Long" type="Node" parent="MeowgiDialogue/Slow"]
+
+[node name="MeowgieTripleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Long"]
+stream = ExtResource("100_1ya26")
+
+[node name="MeowgieTripleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Long"]
+stream = ExtResource("101_45feq")
+
+[node name="MeowgieTripleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Long"]
+stream = ExtResource("102_ghv7j")
+
+[node name="MeowgieTripleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Long"]
+stream = ExtResource("103_s5l7d")
+
+[node name="MeowgieTripleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Slow/Long"]
+stream = ExtResource("104_nr6dn")
+
+[node name="Fast" type="Node" parent="MeowgiDialogue"]
+
+[node name="Short" type="Node" parent="MeowgiDialogue/Fast"]
+
+[node name="MeowgieSingleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Short"]
+stream = ExtResource("105_kryst")
+
+[node name="MeowgieSingleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Short"]
+stream = ExtResource("106_vfnsu")
+
+[node name="MeowgieSingleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Short"]
+stream = ExtResource("107_fxjt6")
+
+[node name="MeowgieSingleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Short"]
+stream = ExtResource("108_pt5xc")
+
+[node name="MeowgieSingleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Short"]
+stream = ExtResource("109_cmxxj")
+
+[node name="Med" type="Node" parent="MeowgiDialogue/Fast"]
+
+[node name="MeowgieDoubleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("110_jcer0")
+
+[node name="MeowgieDoubleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("111_txwej")
+
+[node name="MeowgieDoubleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("112_r06j2")
+
+[node name="MeowgieDoubleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("113_v8fxg")
+
+[node name="MeowgieDoubleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("114_51lwp")
+
+[node name="MeowgieDoubleF" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("115_6nsc7")
+
+[node name="MeowgieDoubleG" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("116_kammi")
+
+[node name="MeowgieDoubleH" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("117_xl17m")
+
+[node name="MeowgieDoubleI" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Med"]
+stream = ExtResource("118_5wuyl")
+
+[node name="Long" type="Node" parent="MeowgiDialogue/Fast"]
+
+[node name="MeowgieTripleA" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Long"]
+stream = ExtResource("119_r3j4g")
+
+[node name="MeowgieTripleB" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Long"]
+stream = ExtResource("120_qgfgt")
+
+[node name="MeowgieTripleC" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Long"]
+stream = ExtResource("121_4575l")
+
+[node name="MeowgieTripleD" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Long"]
+stream = ExtResource("122_hv3gn")
+
+[node name="MeowgieTripleE" type="AudioStreamPlayer" parent="MeowgiDialogue/Fast/Long"]
+stream = ExtResource("123_h48yl")
+
+[node name="GroegiDialogue" type="Node" parent="." node_paths=PackedStringArray("_shortWords", "_medWords", "_longWords", "_shortWordsFast", "_medWordsFast", "_longWordsFast")]
+script = ExtResource("7_t56ee")
+_shortWords = NodePath("Slow/Short")
+_medWords = NodePath("Slow/Med")
+_longWords = NodePath("Slow/Long")
+_shortWordsFast = NodePath("Fast/Short")
+_medWordsFast = NodePath("Fast/Med")
+_longWordsFast = NodePath("Fast/Long")
+
+[node name="Slow" type="Node" parent="GroegiDialogue"]
+
+[node name="Short" type="Node" parent="GroegiDialogue/Slow"]
+
+[node name="GroegiSingleA" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Short"]
+stream = ExtResource("124_jbsoa")
+
+[node name="GroegiSingleB" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Short"]
+stream = ExtResource("125_ignpr")
+
+[node name="GroegiSingleC" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Short"]
+stream = ExtResource("126_k12v7")
+
+[node name="GroegiSingleD" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Short"]
+stream = ExtResource("127_ran43")
+
+[node name="GroegiSingleE" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Short"]
+stream = ExtResource("128_n81vw")
+
+[node name="Med" type="Node" parent="GroegiDialogue/Slow"]
+
+[node name="GroegiDoubleA" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("129_b6tfu")
+
+[node name="GroegiDoubleB" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("130_66s7n")
+
+[node name="GroegiDoubleC" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("131_caoby")
+
+[node name="GroegiDoubleD" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("132_qr5c0")
+
+[node name="GroegiDoubleE" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("133_l3ukl")
+
+[node name="GroegiDoubleF" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("134_w3uj8")
+
+[node name="GroegiDoubleG" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("135_n1c04")
+
+[node name="GroegiDoubleH" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("136_gbhi7")
+
+[node name="GroegiDoubleI" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Med"]
+stream = ExtResource("137_1tdbc")
+
+[node name="Long" type="Node" parent="GroegiDialogue/Slow"]
+
+[node name="GroegiTripleA" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Long"]
+stream = ExtResource("138_lyedv")
+
+[node name="GroegiTripleB" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Long"]
+stream = ExtResource("139_ugxm3")
+
+[node name="GroegiTripleC" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Long"]
+stream = ExtResource("140_cifks")
+
+[node name="GroegiTripleD" type="AudioStreamPlayer" parent="GroegiDialogue/Slow/Long"]
+stream = ExtResource("141_a14pa")
+
+[node name="Fast" type="Node" parent="GroegiDialogue"]
+
+[node name="Short" type="Node" parent="GroegiDialogue/Fast"]
+
+[node name="GroegiSingleA" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Short"]
+stream = ExtResource("142_gh8ky")
+
+[node name="GroegiSingleB" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Short"]
+stream = ExtResource("143_f7qhe")
+
+[node name="GroegiSingleC" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Short"]
+stream = ExtResource("144_pu641")
+
+[node name="GroegiSingleD" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Short"]
+stream = ExtResource("145_2v7df")
+
+[node name="GroegiSingleE" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Short"]
+stream = ExtResource("146_gtfkq")
+
+[node name="Med" type="Node" parent="GroegiDialogue/Fast"]
+
+[node name="GroegiDoubleA" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("147_5qgb8")
+
+[node name="GroegiDoubleB" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("148_o5wgm")
+
+[node name="GroegiDoubleC" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("149_8si82")
+
+[node name="GroegiDoubleD" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("150_3g0ll")
+
+[node name="GroegiDoubleE" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("151_qh02e")
+
+[node name="GroegiDoubleF" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("152_6620a")
+
+[node name="GroegiDoubleG" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("153_7p1t3")
+
+[node name="GroegiDoubleH" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("154_ncfhd")
+
+[node name="GroegiDoubleI" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Med"]
+stream = ExtResource("155_se46w")
+
+[node name="Long" type="Node" parent="GroegiDialogue/Fast"]
+
+[node name="GroegiTripleA" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Long"]
+stream = ExtResource("156_7ghfb")
+
+[node name="GroegiTripleB" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Long"]
+stream = ExtResource("157_svc2n")
+
+[node name="GroegiTripleC" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Long"]
+stream = ExtResource("158_jqpcn")
+
+[node name="GroegiTripleD" type="AudioStreamPlayer" parent="GroegiDialogue/Fast/Long"]
+stream = ExtResource("159_0exjv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(576, 324)
+sprite_frames = SubResource("SpriteFrames_1bamb")
+animation = &"Dance"
+autoplay = "Dance"
+speed_scale = 0.35
+
+[node name="TextureButton" type="TextureButton" parent="."]
+process_mode = 3
+offset_left = 46.0
+offset_top = 480.0
+offset_right = 146.0
+offset_bottom = 580.0
+texture_normal = ExtResource("161_5pdbf")
+texture_pressed = ExtResource("161_5pdbf")
+texture_hover = ExtResource("161_5pdbf")
+script = ExtResource("162_jke5m")
+
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

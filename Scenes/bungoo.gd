@@ -17,6 +17,7 @@ var _thanksDialogue: Array[GlobalEnums.Dialogue] = [GlobalEnums.Dialogue.BUNGOOT
 @export var _TalkZone: CollisionShape3D
 @export var _Collider: CollisionShape3D
 @export var _TPSFX: AudioStreamPlayer
+@export var _creditsTrigger: CreditsTrigger
 
 func player_entered(_obj: Object):
 	if (!_transitioning and !_finished):
@@ -44,6 +45,7 @@ func _physics_process(delta: float) -> void:
 			_TalkZone.set_deferred("disabled", true)
 			_FCollider.set_deferred("disabled", false)
 			_FTalkZone.set_deferred("disabled", false)
+			_creditsTrigger.increment()
 		_curTransitionTime += delta
 		
 	if (Input.is_action_just_pressed("speak")):

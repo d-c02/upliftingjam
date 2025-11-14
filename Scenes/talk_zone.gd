@@ -17,6 +17,7 @@ func player_entered(_obj: Object):
 	_InteractIcon.visible = true
 	_active = true
 	_player._inZone = true
+	print_debug("AHHH")
 	
 func player_exited(_obj: Object):
 	_InteractIcon.visible = false

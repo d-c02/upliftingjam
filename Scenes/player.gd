@@ -39,6 +39,13 @@ var _stateDict: Dictionary[States, Callable] = {
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_initialPos = global_position
+
+var _initialPos: Vector3
+func resetPos():
+	global_position = _initialPos
+	_state = States.GROUNDED
+	
 
 #func _process(delta: float) -> void:
 #	if Input.is_action_just_pressed("recapture_mouse"):
@@ -369,6 +376,8 @@ func rail_entered(body: Object, gr: GrindRail):
 				_grindDirection = 1
 			else:
 				_grindDirection = -1
+		velocity = Vector3.ZERO
+		_targetVelocity = Vector3.ZERO
 			
 func drown(body: Object):
 	velocity = Vector3.ZERO

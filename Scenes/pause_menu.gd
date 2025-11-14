@@ -10,6 +10,7 @@ class_name PauseMenu
 @export var _wipeSpeed: float = 1.0
 @export var _material: ShaderMaterial
 @export var _materialIn: ShaderMaterial
+var _loadCredits: bool = false
 
 @export_group("Text")
 @export var _textBox: TextureRect
@@ -50,6 +51,9 @@ var _curReadTime: float = 0
 var _wordDelay: bool = false
 var _inNonWordZone: bool = false
 
+@export_group("Reset")
+@export var _player: Player
+@export var _pumpker: Pumpkin
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -61,6 +65,12 @@ func StartDrownPause(obj: Object):
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_transitioningOut = true
 	_transitionWipeOut.visible = true
+	
+func StartLoadCredits():
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	_transitioningOut = true
+	_transitionWipeOut.visible = true
+	_loadCredits = true 
 	
 func _process(delta: float) -> void:
 	if (_transitioningIn):
@@ -77,7 +87,15 @@ func _process(delta: float) -> void:
 		if (progress <= -0.5):
 			_transitioningOut = false
 			process_mode = Node.PROCESS_MODE_WHEN_PAUSED
-			get_tree().reload_current_scene()
+			if !_loadCredits:
+				_pumpker.resetPos()
+				_player.resetPos()
+				process_mode = Node.PROCESS_MODE_ALWAYS
+				_transitioningIn = true
+				_transitionWipeIn.visible = true
+				#get_tree().reload_current_scene()
+			else:
+				get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 			
 	if (_readingDialogue):
 		if (_curDialogue.length() > 0):
