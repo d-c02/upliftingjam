@@ -5,6 +5,7 @@ class_name Pumpkin
 var _initialPos: Vector3
 
 func _ready() -> void:
+	super()
 	_initialPos = global_position
 	global_position = _initialPos
 	visible = true
